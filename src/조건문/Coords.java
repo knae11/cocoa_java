@@ -1,3 +1,5 @@
+package 조건문;
+
 import java.util.Scanner;
 
 public class Coords {
@@ -22,7 +24,7 @@ public class Coords {
         }
         if(x>0 && y<0){
             System.out.println("4");
-         
+
         }
     }
 }
