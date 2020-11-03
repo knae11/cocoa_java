@@ -19,4 +19,6 @@
 - 원래는 객체끼리 message를 주고받으며 작동하는 것이 객체지향 프로그래밍
 - 왜 static 을 사용하면 안되지? Main 클래스에서 인스턴스로 만들기 때문인가..?
 
-## 기타학습
+## 기타학습 및 개인회고
+- [1일차](https://www.notion.so/1-ebf7f22840ee4ee3838787f108cdcba1)
+- [2일차](https://www.notion.so/2-8d8625d9efb24df78d37da20ed1140dc)
