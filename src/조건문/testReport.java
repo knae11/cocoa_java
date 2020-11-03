@@ -3,9 +3,6 @@ package 조건문;
 import java.util.Scanner;
 
 public class testReport {
-    public static boolean isBetween (int x, int lower, int upper){
-        return lower <= x && x< upper;
-    }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

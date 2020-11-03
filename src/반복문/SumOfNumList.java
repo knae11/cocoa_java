@@ -9,6 +9,7 @@ public class SumOfNumList {
         int num = sc.nextInt();
         System.out.println("숫자?");
         String numbers = sc.next();
+
         String[] nums = numbers.split("");
         int result=0;
         for (int i=0; i<num; i++){
