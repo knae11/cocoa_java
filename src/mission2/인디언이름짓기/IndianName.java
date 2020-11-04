@@ -1,4 +1,4 @@
-package mission2;
+package mission2.인디언이름짓기;
 
 import java.util.Scanner;
 
