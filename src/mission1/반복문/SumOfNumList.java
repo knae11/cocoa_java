@@ -1,4 +1,4 @@
-package 반복문;
+package mission1.반복문;
 
 import java.util.Scanner;
 

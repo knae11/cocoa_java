@@ -1,4 +1,4 @@
-package stars;
+package mission1.stars;
 
 import java.util.Scanner;
 

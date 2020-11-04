@@ -1,4 +1,4 @@
-package 조건문;
+package mission1.조건문;
 
 import java.util.Scanner;
 
