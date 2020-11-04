@@ -3,105 +3,69 @@ package mission2.초간단RPG;
 import java.util.Scanner;
 
 public class SimpleRPG {
-    String[][] field = new String[11][11];
-    private int level = 1;
-    private int mineNum = 1;
-    private int score = 1;
-    int currX;
-    int currY;
-    final String MONSTER = "👻";
-    final String MINE = "☀";
-    final String CHARACTER = "❤";
+    public GameField stage;
+    public Status status;
+
+    public SimpleRPG(Status status, GameField stage) {
+        this.status = status;
+        this.stage = stage;
+    }
+
     private void levelUp(){
-        level +=1;
-        score+=1;
-        mineNum = mineNum*2;
-        System.out.println("level up : "+ level + " & " + "score : " +score + " & " + "mine numbers : " +mineNum );
+        this.status.level +=1;
+        this.status.score+=1;
+        this.status.mineNum = this.status.mineNum*2;
+        System.out.println("level up : "+ this.status.level + " & " + "score : " +this.status.score + " & " + "mine numbers : " +this.status.mineNum );
 
     }
-    private void randomMonster(){
-        int i = (int)(Math.random()*10);
-        int j = (int)(Math.random()*10);
-        this.field[i][j] = MONSTER;
-    }
-    private void randomMine(){
-        int i = (int)(Math.random()*10);
-        int j = (int)(Math.random()*10);
-        this.field[i][j] = MINE;
-    }
-    public void init(){
-        for(int j = 0; j<11; j++){
-            for (int i = 0; i<11; i++){
-                this.field[j][i] = "0";
-            }
-        }
-        for(int i =0; i<(mineNum); i++){
-            randomMine();
-        }
-        randomMonster();
-        currX=5;
-        currY=5;
-        field[currX][currX]=CHARACTER;
-        System.out.println("miniGame Starts");
-        print();
-        move();
-    }
+
 
     public void printDead(){
         for(int j = 0; j<11; j++){
             for (int i = 0; i<11; i++){
-                System.out.printf("%2s",field[j][i]);
+                System.out.printf("%2s",this.status.field[j][i]);
             }
             System.out.println();
         }
 
     }
-    private void print(){
-        for(int j = 0; j<11; j++){
-            for (int i = 0; i<11; i++){
-                if(field[j][i].equals(MINE)){
-                    System.out.printf("%2s","0");
-                    continue;
-                }
-                System.out.printf("%2s",field[j][i]);
-            }
-            System.out.println();
-        }
-    }
+
     public void move(){
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("w,a,s,d 중 하나를 입력해 주세요");
+        System.out.println("w,a,s,d 중 하나를 입력해 주세요 (종료 : q)");
         while(sc.hasNext()) {
             String key = sc.next();
-            field[currX][currY]="0";
+            this.status.field[this.status.currX][this.status.currY]="0";
             if (key.equals("w")) {
-                currX -= 1;
+                this.status.currX -= 1;
             }
             if (key.equals("a")) {
-                currY -= 1;
+                this.status.currY -= 1;
             }
             if (key.equals("s")) {
-                currX += 1;
+                this.status.currX += 1;
             }
             if (key.equals("d")) {
-                currY += 1;
+                this.status.currY += 1;
             }
-
-            if(field[currX][currY].equals(MONSTER)){
+            if(key.equals("q")){
+                return;
+            }
+            if(this.status.field[this.status.currX][this.status.currY].equals(this.status.MONSTER)){
                 System.out.println("you win, level up!!!");
                 levelUp();
-                init();
+                this.stage.init();
                 continue;
             }
-            if(field[currX][currY].equals(MINE)){
+            if(this.status.field[this.status.currX][this.status.currY].equals(this.status.MINE)){
                 printDead();
                 System.out.println("encounter mine, you lose!!!");
                 return;
             }
-            field[currX][currY]=CHARACTER;
-            print();
+            this.status.field[this.status.currX][this.status.currY]=this.status.CHARACTER;
+            this.stage.print();
 
         }
         }
