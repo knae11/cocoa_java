@@ -4,12 +4,21 @@ import java.util.Scanner;
 
 public class SimpleRPG {
     String[][] field = new String[11][11];
-
-    int currX =5;
-    int currY =5;
+    private int level = 1;
+    private int mineNum = 1;
+    private int score = 1;
+    int currX;
+    int currY;
     final String MONSTER = "👻";
     final String MINE = "☀";
     final String CHARACTER = "❤";
+    private void levelUp(){
+        level +=1;
+        score+=1;
+        mineNum = mineNum*2;
+        System.out.println("level up : "+ level + " & " + "score : " +score + " & " + "mine numbers : " +mineNum );
+
+    }
     private void randomMonster(){
         int i = (int)(Math.random()*10);
         int j = (int)(Math.random()*10);
@@ -26,12 +35,28 @@ public class SimpleRPG {
                 this.field[j][i] = "0";
             }
         }
+        for(int i =0; i<(mineNum); i++){
+            randomMine();
+        }
         randomMonster();
-        randomMine();
-        this.field[5][5]=CHARACTER;
+        currX=5;
+        currY=5;
+        field[currX][currX]=CHARACTER;
+        System.out.println("miniGame Starts");
+        print();
+        move();
     }
 
-    public void print(){
+    public void printDead(){
+        for(int j = 0; j<11; j++){
+            for (int i = 0; i<11; i++){
+                System.out.printf("%2s",field[j][i]);
+            }
+            System.out.println();
+        }
+
+    }
+    private void print(){
         for(int j = 0; j<11; j++){
             for (int i = 0; i<11; i++){
                 if(field[j][i].equals(MINE)){
@@ -46,6 +71,7 @@ public class SimpleRPG {
     public void move(){
 
         Scanner sc = new Scanner(System.in);
+
         System.out.println("w,a,s,d 중 하나를 입력해 주세요");
         while(sc.hasNext()) {
             String key = sc.next();
@@ -62,11 +88,15 @@ public class SimpleRPG {
             if (key.equals("d")) {
                 currY += 1;
             }
+
             if(field[currX][currY].equals(MONSTER)){
-                System.out.println("encounter monster, you win!!!");
-                return;
+                System.out.println("you win, level up!!!");
+                levelUp();
+                init();
+                continue;
             }
             if(field[currX][currY].equals(MINE)){
+                printDead();
                 System.out.println("encounter mine, you lose!!!");
                 return;
             }
