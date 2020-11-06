@@ -5,9 +5,6 @@ public class LevelCheck {
     private int mineNum = 1;
     private int score = 1;
 
-    public int getLevel(){
-        return this.level;
-    }
     public int getMineNum(){
         return this.mineNum;
     }

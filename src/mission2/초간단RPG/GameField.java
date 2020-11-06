@@ -16,13 +16,13 @@ public class GameField {
     private void randomPosition(String item){
         int i = (int)(Math.random()*10);
         int j = (int)(Math.random()*10);
-        this.field[i][j] = item;
+        field[i][j] = item;
     }
 
     public void init(){
         for(int j = 0; j<11; j++){
             for (int i = 0; i<11; i++){
-                this.field[j][i] = "0";
+                field[j][i] = "0";
             }
         }
         for(int i =0; i<(level.getMineNum()); i++){
@@ -31,7 +31,7 @@ public class GameField {
         randomPosition(MONSTER);
         p.setX(5);
         p.setY(5);
-        this.field[p.getX()][p.getY()]=CHARACTER;
+        field[p.getX()][p.getY()]=CHARACTER;
         System.out.println("miniGame Starts");
         printGame.print(this.field);
         move();
@@ -60,20 +60,20 @@ public class GameField {
             if(key.equals("q")){
                 return;
             }
-            if(this.field[p.getX()][p.getY()].equals(GameField.MONSTER)){
+            if(this.field[p.getX()][p.getY()].equals(MONSTER)){
                 System.out.println("you win, level up!!!");
                 level.levelUp();
                 this.init();
                 continue;
             }
-            if(this.field[p.getX()][p.getY()].equals(GameField.MINE)){
-                printGame.printDead(this.field);
+            if(this.field[p.getX()][p.getY()].equals(MINE)){
+                printGame.printDead(field);
                 System.out.println("encounter mine, you lose!!!");
                 //q의 경우에는 return 되는데 왜 안끝나지..? 미스테리
                 return;
             }
-            this.field[p.getX()][p.getY()]=GameField.CHARACTER;
-            printGame.print(this.field);
+            this.field[p.getX()][p.getY()]=CHARACTER;
+            printGame.print(field);
 
         }
     }
