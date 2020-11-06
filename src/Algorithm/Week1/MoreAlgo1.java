@@ -9,18 +9,12 @@ import java.util.*;
  public class Main{
      public static void main(String[] args) {
 
-
-             Scanner sc = new Scanner(System.in);
-        int tc = sc.nextInt();
-        for (int i =0; i<tc ; i++){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        for(int i=0; i<n; i++){
             int a = sc.nextInt();
-            String word = sc.next();
-            for (int j=0; j<word.length(); j++){
-                for (int k =0; k<a; k++){
-                    System.out.print(word.charAt(j));
-                }
-            }
-            System.out.println();
+            int b = sc.nextInt();
+            System.out.println(a+b);
         }
 
     }
@@ -136,8 +130,54 @@ import java.util.*;
             System.out.println();
         }
     }
+
+    public void bj10818(){
+        //94퍼 가서 오답처리;  ==> 왜냐면 주어지는 수가 '음수'인 경우 처리 안해서! *제발 조건파악 잘하자*
+        //라이브러리 Math.min Math.max 를 불러와서 해결할 수도 있다!
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int min= 1000000;
+        int max =-1000000;
+        for (int i =0; i<n;i++){
+            int a = sc.nextInt();
+            if(a>max){
+                max =a;
+            }
+            if(a<min){
+                min =a;
+            }
+        }
+        System.out.println(min + " "+ max);
+    }
+
+    public void bj10869(){
+
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        System.out.println(a+b);
+        System.out.println(a-b);
+        System.out.println(a*b);
+        System.out.println(a/b);
+        System.out.println(a%b);
+
+    }
+
+    public void bj10950(){
+
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        for(int i=0; i<n; i++){
+            int a = sc.nextInt();
+            int b = sc.nextInt();
+            System.out.println(a+b);
+        }
+
+
+    }
+
     public static void main(String[] args) {
     MoreAlgo1 solution = new MoreAlgo1();
-    solution.bj2675();
+    solution.bj10950();
     }
 }

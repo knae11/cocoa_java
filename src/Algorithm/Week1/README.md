@@ -20,3 +20,4 @@
 - nextLine은 문자열로 주고, split()은 String 배열을 반환
 - trim 공백 삭제, isEmpty()
 - 배열을 출력 : Arrays.toString(배열)
+- 음수인 경우까지! 문제의 조건 잘 파악하자!!
