@@ -1,9 +1,7 @@
 package mission3;
 
-import java.util.Scanner;
-
 public class Prompt {
-    public void selectWhatToDo() {
+    public void hMenu() {
         System.out.println("--무엇을 하시겠습니까?--");
         System.out.println("아래 키 중 하나를 입력해 주세요.");
         System.out.println("0: 사용자 로그인 및 등록");
@@ -15,7 +13,12 @@ public class Prompt {
         System.out.println("q: 끝내기");
         System.out.println("----------------------");
     }
-
+    public void selectWhatToDo(){
+        System.out.println();
+        System.out.println("--무엇을 하시겠습니까?--");
+        System.out.println(" 0,1,2,3,4,h,q 중 하나를 입력해 주세요.");
+        System.out.println("----------------------");
+    }
     public void zeroUserInfo() {
         System.out.println("사용자 이름과 비밀번호를 입력해 주세요.");
     }
@@ -36,33 +39,6 @@ public class Prompt {
         System.out.println("가계부를 확인 할 년도,월(yyyy-mm)을 입력해 주세요.");
     }
 
-    public void runPrompt() {
-        Scanner sc = new Scanner(System.in);
-        selectWhatToDo();
-        while (true) {
-            String key = sc.next();
-            switch (key) {
-                case "0":
-                    zeroUserInfo();
-                    break;
-                case "1":
-                    oneAddData();
-                    break;
-                case "2":
-                    twoDeleteData();
-                    break;
-                case "3":
-                    threeUpdateData();
-                    break;
-                case "4":
-                    fourReadData();
-                    break;
-                case "h":
-                    selectWhatToDo();
-                    break;
-                case "q":
-                    return;
-            }
-        }
+
     }
-}
+
