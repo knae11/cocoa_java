@@ -17,10 +17,7 @@
 
 
 ## 학습
-- call-by-value, call-by-reference
-- 자바 메모리 구조
-- 초간단 RPG class로 나눠보는 연습하기
-- 숫자 셔플 만들기
+
 
 ## 기타학습 및 개인회고
 - [6일차]()
