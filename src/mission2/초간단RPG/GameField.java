@@ -42,7 +42,7 @@ public class GameField {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("w,a,s,d 중 하나를 입력해 주세요 (종료 : q)");
-        while(sc.hasNext()) {
+        while(true) {
             String key = sc.next();
             this.field[p.getX()][p.getY()]="0";
             if (key.equals("w")) {
@@ -63,7 +63,7 @@ public class GameField {
             if(this.field[p.getX()][p.getY()].equals(MONSTER)){
                 System.out.println("you win, level up!!!");
                 level.levelUp();
-                this.init();
+                //this.init(); init과 move 함수를 분리시켜주자! continue의 역할
                 continue;
             }
             if(this.field[p.getX()][p.getY()].equals(MINE)){

@@ -24,7 +24,7 @@ public class Prompt {
     }
 
     public void oneAddData() {
-        System.out.println("날짜(yyyy-mm-dd), 내용, 수입, 지출 순으로 입력해 주세요.");
+        System.out.println("날짜(yyyy-mm-dd), 내용, 수입, 지출 순으로 입력해 주세요. (구분자는 , 입니다.)");
     }
 
     public void twoDeleteData() {
@@ -36,7 +36,7 @@ public class Prompt {
     }
 
     public void fourReadData() {
-        System.out.println("가계부를 확인 할 년도,월(yyyy-mm)을 입력해 주세요.");
+        System.out.println("가계부를 확인 할 년도-월(yyyy-mm)을 입력해 주세요.");
     }
 
 
