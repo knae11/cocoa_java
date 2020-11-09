@@ -1,17 +1,13 @@
 package mission3;
 
 public class MoneyData {
-    private String user;
-    private int password;
+    private int id =1;
     private int income;
     private int spending;
     private int total;
 
-    public String setUser(String user){
-        return this.user = user;
-    }
-    public int setPassword(int password){
-        return this.password = password;
+    public int addId(){
+        return this.id +=1;
     }
 
     public int setIncome(int income){
@@ -27,6 +23,11 @@ public class MoneyData {
     public int addSpending(int spending){
         return this.spending += spending;
     }
+
+    public int getId(){
+        return this.id;
+    }
+
     public int getIncome(){
         return this.income;
     }
