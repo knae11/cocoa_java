@@ -33,16 +33,14 @@ public class GameField {
         p.setY(5);
         field[p.getX()][p.getY()]=CHARACTER;
         System.out.println("miniGame Starts");
-        printGame.print(this.field);
-        move();
     }
 
     public void move(){
 
         Scanner sc = new Scanner(System.in);
-
-        System.out.println("w,a,s,d 중 하나를 입력해 주세요 (종료 : q)");
         while(true) {
+            printGame.print(this.field);
+            System.out.println("w,a,s,d 중 하나를 입력해 주세요 (종료 : q)");
             String key = sc.next();
             this.field[p.getX()][p.getY()]="0";
             if (key.equals("w")) {
@@ -63,17 +61,16 @@ public class GameField {
             if(this.field[p.getX()][p.getY()].equals(MONSTER)){
                 System.out.println("you win, level up!!!");
                 level.levelUp();
-                //this.init(); init과 move 함수를 분리시켜주자! continue의 역할
+                this.init();
                 continue;
             }
             if(this.field[p.getX()][p.getY()].equals(MINE)){
                 printGame.printDead(field);
                 System.out.println("encounter mine, you lose!!!");
-                //q의 경우에는 return 되는데 왜 안끝나지..? 미스테리
                 return;
             }
             this.field[p.getX()][p.getY()]=CHARACTER;
-            printGame.print(field);
+
 
         }
     }

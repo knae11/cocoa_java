@@ -5,5 +5,6 @@ public class Main {
 
         GameField game = new GameField();
         game.init();
+        game.move();
     }
 }
