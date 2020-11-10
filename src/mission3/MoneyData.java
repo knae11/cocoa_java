@@ -10,11 +10,11 @@ public class MoneyData {
         return this.id +=1;
     }
 
-    public int setIncome(int income){
-        return this.income = income;
+    public void setIncome(int income){
+         this.income = income;
     }
-    public int setSpending(int spending){
-        return this.spending = spending;
+    public void setSpending(int spending){
+         this.spending = spending;
     }
 
     public int addIncome(int income){
