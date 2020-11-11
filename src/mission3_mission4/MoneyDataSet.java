@@ -31,4 +31,11 @@ public class MoneyDataSet {
     }
 
     public String getSpendingMethod(){ return this.spendingMethod;}
+
+    public String getContents(){
+        return this.contents;
+    }
+    public int getDay(){
+        return Integer.parseInt(this.date.split("-")[1]);
+    }
 }

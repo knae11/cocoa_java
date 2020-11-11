@@ -80,9 +80,30 @@ public class Prompt {
         System.out.println("기존내용을 참고하여 업데이트 할 내용을 새롭게 입력해 주세요 :)");
         return oneAddData();
     }
-//
-//    public String selectSearchType(){
-//        System.out.println("a : 금액으로 검색, b : 소비유형으로 검색");
-//    }
+
+    public String selectSearchType(){
+        System.out.println("a : 날짜로 검색, b : 내용으로 검색, c: 금액으로 검색, d: 수입으로 검색, e: 지출로 검색, f: 소비유형으로 검색, z: 전체보기");
+        return scanner.nextLine().trim();
+    }
+
+    public int selectMoney(){
+        System.out.println("검색할 금액은? [원]");
+        return Integer.parseInt(scanner.nextLine().trim());
+    }
+
+    public String selectSpendingMethod(){
+        System.out.println("현금? 카드?");
+        return scanner.nextLine();
+    }
+
+    public int selectDay() {
+        System.out.println("검색할 일자는?");
+        return Integer.parseInt(scanner.nextLine().trim());
+    }
+
+    public String selectKeyword() {
+        System.out.println("검색할 키워드는?");
+        return scanner.nextLine();
+    }
 }
 

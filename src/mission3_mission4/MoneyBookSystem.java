@@ -114,10 +114,6 @@ public class MoneyBookSystem {
     private void readDataByMonth(int yearAndMonth) {
         calculateMoneyData.setIncome(0);
         calculateMoneyData.setSpending(0);
-        // 월별 hashMap
-        moneyBookMapBySpendingMethod = new HashMap<>();
-        moneyBookMapByIncome = new HashMap<>();
-        moneyBookMapBySpending = new HashMap<>();
 
         System.out.println("id, 날짜, 내용, 수입, 지출, 지출방식");
         for (int key : moneyBookMapByDate.get(yearAndMonth)) {
@@ -125,23 +121,119 @@ public class MoneyBookSystem {
                 continue;
             }
             MoneyDataSet value = moneyBookMapById.get(key);
-            //저장
-            //moneyBookMapByIncome.put(value.getIncome(), value);
-            //moneyBookMapBySpending.put(value.getSpending(), value);
-            //moneyBookMapBySpendingMethod.put(value.getSpendingMethod(), value);
 
             calculateThisMonthMoney(key, value);
         }
         prompt.printThisMonthMoney(calculateMoneyData.getIncome(), calculateMoneyData.getSpending(), calculateMoneyData.getTotal());
-        //월별 자료중 선택가능
-        //sortBySearching();
+
     }
 
+    private void sortBySearching(int yearAndMonth) {
+        String key = prompt.selectSearchType();
+        switch (key){
+            case "a":
+                sortByDate(yearAndMonth);
+                break;
+            case "b":
+                sortByContents(yearAndMonth);
+                break;
+            case "c":
+                sortByMoney(yearAndMonth);
+                break;
+            case "d":
+                sortByIncome(yearAndMonth);
+                break;
+            case "e":
+                sortBySpending(yearAndMonth);
+                break;
+            case "f":
+                sortBySpendingMethod(yearAndMonth);
+                break;
+            case "z":
+                readDataByMonth(yearAndMonth);
+                break;
+        }
+    }
+
+    private void sortByContents(int yearAndMonth) {
+        String keyword = prompt.selectKeyword();
+        for (int key : moneyBookMapByDate.get(yearAndMonth)) {
+            if( !moneyBookMapById.containsKey(key)){
+                continue;
+            }
+            MoneyDataSet value = moneyBookMapById.get(key);
+            if(value.getContents().contains(keyword)){
+                System.out.println(key + ", " + value);
+            }
+        }
+    }
+
+    private void sortByDate(int yearAndMonth) {
+        int day = prompt.selectDay();
+        for (int key : moneyBookMapByDate.get(yearAndMonth)) {
+            if( !moneyBookMapById.containsKey(key)){
+                continue;
+            }
+            MoneyDataSet value = moneyBookMapById.get(key);
+            if(value.getDay() == day){
+                System.out.println(key + ", " + value);
+            }
+        }
+    }
+
+    private void sortBySpendingMethod(int yearAndMonth) {
+        String method = prompt.selectSpendingMethod();
+        for (int key : moneyBookMapByDate.get(yearAndMonth)) {
+            if( !moneyBookMapById.containsKey(key)){
+                continue;
+            }
+            MoneyDataSet value = moneyBookMapById.get(key);
+            if(value.getSpendingMethod().equals(method)){
+                System.out.println(key + ", " + value);
+            }
+        }
+    }
+
+    private void sortByMoney(int yearAndMonth) {
+        int money = prompt.selectMoney();
+        for (int key : moneyBookMapByDate.get(yearAndMonth)) {
+            if( !moneyBookMapById.containsKey(key)){
+                continue;
+            }
+            MoneyDataSet value = moneyBookMapById.get(key);
+            if(value.getIncome() == money || value.getSpending() == money){
+                System.out.println(key + ", " + value);
+            }
+        }
+    }
+
+    private void sortByIncome(int yearAndMonth){
+        for (int key : moneyBookMapByDate.get(yearAndMonth)) {
+            if( !moneyBookMapById.containsKey(key)){
+                continue;
+            }
+            MoneyDataSet value = moneyBookMapById.get(key);
+            if(value.getIncome() != 0){
+                System.out.println(key + ", " + value);
+            }
+        }
+    }
+    private void sortBySpending(int yearAndMonth){
+        for (int key : moneyBookMapByDate.get(yearAndMonth)) {
+            if( !moneyBookMapById.containsKey(key)){
+                continue;
+            }
+            MoneyDataSet value = moneyBookMapById.get(key);
+            if(value.getSpending() != 0){
+                System.out.println(key + ", " + value);
+            }
+        }
+    }
 
 
     public void readMoneyBookData() {
         int yearAndMonth = prompt.fourReadData();
-        readDataByMonth(yearAndMonth);
+        sortBySearching(yearAndMonth);
         prompt.selectWhatToDo();
     }
 
