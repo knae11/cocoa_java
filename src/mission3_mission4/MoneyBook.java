@@ -1,17 +1,16 @@
-package mission3;
+package mission3_mission4;
 
 import java.util.Scanner;
 
 public class MoneyBook {
 
     MoneyBookSystem system = new MoneyBookSystem();
-    Prompt prompt = new Prompt();
 
     public void init() {
         Scanner sc = new Scanner(System.in);
-        String name = prompt.zeroUserInfo();
-        prompt.hMenu(name);
-        while (true) {
+        boolean userCheck= system.getUserInfo();
+        system.setIdByReadingExistingFile();
+        while (userCheck) {
             String key = sc.nextLine().trim();
             switch (key) {
                 case "1":
@@ -27,13 +26,13 @@ public class MoneyBook {
                     system.readMoneyBookData();
                     break;
                 case "h":
-                    prompt.hMenu(name);
+                    system.printMenu();
                     break;
                 case "q":
+                    system.beforeClose();
+                    sc.close();
                     return;
             }
         }
     }
-
-
 }

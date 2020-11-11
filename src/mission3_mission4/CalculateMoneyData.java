@@ -1,14 +1,9 @@
-package mission3;
+package mission3_mission4;
 
-public class MoneyData {
-    private int id =1;
+public class CalculateMoneyData {
     private int income;
     private int spending;
     private int total;
-
-    public int addId(){
-        return this.id +=1;
-    }
 
     public void setIncome(int income){
          this.income = income;
@@ -22,10 +17,6 @@ public class MoneyData {
     }
     public int addSpending(int spending){
         return this.spending += spending;
-    }
-
-    public int getId(){
-        return this.id;
     }
 
     public int getIncome(){
