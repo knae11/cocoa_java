@@ -6,7 +6,6 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Set;
 
 public class MoneyBookSystem {
     //class instance 만들기
@@ -16,9 +15,9 @@ public class MoneyBookSystem {
     //각종 저장될 자료구조
     private HashMap<Integer, MoneyDataSet> moneyBookMapById;
     private HashMap<Integer, ArrayList<Integer>> moneyBookMapByDate;
-    private HashMap<String, Set<Integer>> moneyBookMapBySpendingMethod;
-    private HashMap<String, Set<Integer>> moneyBookMapByIncome;
-    private HashMap<String, Set<Integer>> moneyBookMapBySpending;
+    private HashMap<String, ArrayList<Integer>> moneyBookMapBySpendingMethod;
+    private HashMap<Integer,ArrayList<Integer>> moneyBookMapByIncome;
+    private HashMap<Integer,ArrayList<Integer>> moneyBookMapBySpending;
 
     //개인정보 일치
     private String userName = "나나";
@@ -30,9 +29,6 @@ public class MoneyBookSystem {
     public MoneyBookSystem() {
         moneyBookMapById = new HashMap<>();
         moneyBookMapByDate = new HashMap<>();
-        moneyBookMapBySpendingMethod = new HashMap<>();
-        moneyBookMapByIncome = new HashMap<>();
-        moneyBookMapBySpending = new HashMap<>();
     }
 
     //초기 사용자 체크
@@ -78,6 +74,7 @@ public class MoneyBookSystem {
         moneyBookMapByDate.put(line.getYearAndMonth(), idList);
     }
 
+
     // 1. 자료 추가하기 - 파일로 저장하기
     public void addMoneyBookData() {
         MoneyDataSet moneyDataSet = prompt.oneAddData();
@@ -117,14 +114,30 @@ public class MoneyBookSystem {
     private void readDataByMonth(int yearAndMonth) {
         calculateMoneyData.setIncome(0);
         calculateMoneyData.setSpending(0);
+        // 월별 hashMap
+        moneyBookMapBySpendingMethod = new HashMap<>();
+        moneyBookMapByIncome = new HashMap<>();
+        moneyBookMapBySpending = new HashMap<>();
+
         System.out.println("id, 날짜, 내용, 수입, 지출, 지출방식");
         for (int key : moneyBookMapByDate.get(yearAndMonth)) {
+            if( !moneyBookMapById.containsKey(key)){
+                continue;
+            }
             MoneyDataSet value = moneyBookMapById.get(key);
+            //저장
+            //moneyBookMapByIncome.put(value.getIncome(), value);
+            //moneyBookMapBySpending.put(value.getSpending(), value);
+            //moneyBookMapBySpendingMethod.put(value.getSpendingMethod(), value);
+
             calculateThisMonthMoney(key, value);
         }
         prompt.printThisMonthMoney(calculateMoneyData.getIncome(), calculateMoneyData.getSpending(), calculateMoneyData.getTotal());
-
+        //월별 자료중 선택가능
+        //sortBySearching();
     }
+
+
 
     public void readMoneyBookData() {
         int yearAndMonth = prompt.fourReadData();

@@ -80,5 +80,9 @@ public class Prompt {
         System.out.println("기존내용을 참고하여 업데이트 할 내용을 새롭게 입력해 주세요 :)");
         return oneAddData();
     }
+//
+//    public String selectSearchType(){
+//        System.out.println("a : 금액으로 검색, b : 소비유형으로 검색");
+//    }
 }
 

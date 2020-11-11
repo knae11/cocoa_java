@@ -29,4 +29,6 @@ public class MoneyDataSet {
     public int getSpending(){
         return this.spending;
     }
+
+    public String getSpendingMethod(){ return this.spendingMethod;}
 }

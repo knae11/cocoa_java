@@ -40,6 +40,10 @@
 
 ### MISSION 4
 
+- hashMap, arrayList
+- file I/O
+
+
 
 
 ## 기타학습 및 개인회고
