@@ -63,10 +63,13 @@ public class Prompt {
         return Integer.parseInt(scanner.nextLine().trim());
     }
 
-    public void printWhichMonth(int year, int month) {
-        System.out.println(year + "년  " + month + "월의 가계부");
+    public void printWhichMonth(int yearAndMonth) {
         System.out.println();
-        System.out.println("순번 : 날짜, 내용, 하루수입, 하루지출 => 잔액");
+        System.out.println("----<< " + yearAndMonth + "의 가계부 >>----");
+        System.out.println();
+        System.out.println("id, 날짜, 내용, 수입, 지출, 지출방식");
+        System.out.println();
+
     }
 
     public void printThisMonthMoney(int income, int spending, int total) {

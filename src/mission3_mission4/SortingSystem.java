@@ -102,8 +102,7 @@ public class SortingSystem {
     public void readWholeDataByMonth(int yearAndMonth) {
         calculateMoneyData.setIncome(0);
         calculateMoneyData.setSpending(0);
-
-        System.out.println("id, 날짜, 내용, 수입, 지출, 지출방식");
+        prompt.printWhichMonth(yearAndMonth);
         for (int key : moneyBookMapByDate.get(yearAndMonth)) {
             if( !moneyBookMapById.containsKey(key)){
                 continue;
