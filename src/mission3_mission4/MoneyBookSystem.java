@@ -51,7 +51,7 @@ public class MoneyBookSystem {
                 lineCnt++;
                 String[] parsedItem = line.split(",");
                 MoneyDataSet moneyDataSet = new MoneyDataSet(parsedItem[1], parsedItem[2], Integer.parseInt(parsedItem[3]), Integer.parseInt(parsedItem[4]), parsedItem[5]);
-                setHashMapByExistingFile(Integer.parseInt(parsedItem[0]), moneyDataSet);
+                setHashMapByExistingFile(lineCnt, moneyDataSet);
             }
         } catch (Exception e) {
             e.getStackTrace();
@@ -142,7 +142,7 @@ public class MoneyBookSystem {
     }
 
     // 종료하기전 저장
-    public void beforeClose() {
+    public void saveBeforeClose() {
         try {
             PrintWriter writer = new PrintWriter(new FileWriter("src/mission3_mission4/SaveData.txt"));
             for (int key : moneyBookMapById.keySet()) {

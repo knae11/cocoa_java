@@ -1,6 +1,6 @@
 package mission3_mission4;
 
-public class MoneyDataSet {
+public class MoneyDataSet implements Comparable<MoneyDataSet>{
     private  String date;
     private  String contents;
     private int income;
@@ -37,5 +37,10 @@ public class MoneyDataSet {
     }
     public int getDay(){
         return Integer.parseInt(this.date.split("-")[1]);
+    }
+
+    @Override
+    public int compareTo(MoneyDataSet o) {
+       return this.getDay()-o.getDay();
     }
 }

@@ -29,7 +29,7 @@ public class MoneyBook {
                     system.printMenu();
                     break;
                 case "q":
-                    system.beforeClose();
+                    system.saveBeforeClose();
                     sc.close();
                     return;
             }

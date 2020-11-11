@@ -6,7 +6,7 @@ public class Prompt {
     Scanner scanner = new Scanner(System.in);
 
     public void hMenu(String name) {
-        System.out.println("-- "+name + "님 무엇을 하시겠습니까?--");
+        System.out.println("----- "+name + "님 무엇을 하시겠습니까?-----");
         System.out.println("아래 키 중 하나를 입력해 주세요.");
         System.out.println("1: 데이터 입력");
         System.out.println("2: 데이터 삭제");

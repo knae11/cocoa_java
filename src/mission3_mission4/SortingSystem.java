@@ -1,7 +1,6 @@
 package mission3_mission4;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 public class SortingSystem {
 
@@ -9,7 +8,6 @@ public class SortingSystem {
     private HashMap<Integer, ArrayList<Integer>> moneyBookMapByDate;
     private Prompt prompt;
     private CalculateMoneyData calculateMoneyData ;
-
 
     public SortingSystem(HashMap<Integer, MoneyDataSet> moneyBookMapById,HashMap<Integer, ArrayList<Integer>> moneyBookMapByDate){
         this.moneyBookMapByDate= moneyBookMapByDate;
@@ -93,13 +91,13 @@ public class SortingSystem {
         }
     }
 
-    private void calculateThisMonthMoney(int key, MoneyDataSet value) {
-        System.out.println(key + ", " + value);
+    private void calculateThisMonthMoney(MoneyDataSet value) {
         calculateMoneyData.addIncome(value.getIncome());
         calculateMoneyData.addSpending(value.getSpending());
     }
 
     public void readWholeDataByMonth(int yearAndMonth) {
+        List<MoneyDataSet> temp = new ArrayList<>();
         calculateMoneyData.setIncome(0);
         calculateMoneyData.setSpending(0);
         prompt.printWhichMonth(yearAndMonth);
@@ -108,9 +106,18 @@ public class SortingSystem {
                 continue;
             }
             MoneyDataSet value = moneyBookMapById.get(key);
-
-            calculateThisMonthMoney(key, value);
+            System.out.println(key + ", " + value);
+            temp.add(value);
+            calculateThisMonthMoney(value);
         }
+        System.out.println();
+        System.out.println("---- 날짜별 오름차순 정렬 ----");
+        Collections.sort(temp);
+        for(MoneyDataSet sortedData : temp){
+            System.out.println(sortedData);
+        }
+        System.out.println("---------------------------");
+
         prompt.printThisMonthMoney(calculateMoneyData.getIncome(), calculateMoneyData.getSpending(), calculateMoneyData.getTotal());
     }
 }
