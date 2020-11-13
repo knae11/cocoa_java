@@ -16,8 +16,8 @@ public class MoneyBookSystem {
     private HashMap<Integer, ArrayList<Integer>> moneyBookMapByDate;
 
     //개인정보 일치
-    private String userName = "나나";
-    private String password = "1111";
+    private final String userName = "나나";
+    private final String password = "1111";
 
     private int id;
 
@@ -101,7 +101,6 @@ public class MoneyBookSystem {
     }
 
     // 4. 데이터 보기 - 검색, 정렬 옵션 추가하기
-
     public void readMoneyBookData() {
         int yearAndMonth = prompt.fourReadData();
         sortBySearching(yearAndMonth);
