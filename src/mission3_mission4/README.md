@@ -40,7 +40,7 @@
 - hashMap, arrayList
 - file I/O
 - 정렬 Collections Framework
-
+- 기존 가진 git 캐시파일 삭제 명령어 : git rm --cached -r 폴더/
 
 
 ## 기타학습 및 개인회고
