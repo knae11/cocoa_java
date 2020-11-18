@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class hangleClock {
+public class HClock {
 
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_PURPLE = "\u001B[35m";
@@ -19,21 +19,20 @@ public class hangleClock {
             {"후", "육", "칠", "팔", "구", "분"}
     };
 
-    private static List<int[]> posInfo = new ArrayList<>();
+    private  List<int[]> posInfo = new ArrayList<>();
 
-    private static void insertPos ( int i, int j){
+    private  void insertPos ( int i, int j){
         int[] pos = { i, j};
         posInfo.add(pos);
     }
-    public static void getTime() {
+    private void getTime() {
         LocalDateTime currTime = LocalDateTime.now();
         int hour = currTime.getHour();
         int minute = currTime.getMinute();
-       // makeClock(3, 48);
         makeClock(hour, minute);
     }
 
-    private static void partHour(int hour) {
+    private void partHour(int hour) {
         int numHour = hour % 12;
         if (0 < numHour && numHour < 6) {
             insertPos(0, numHour-1);
@@ -76,7 +75,7 @@ public class hangleClock {
 
     }
 
-    private static void partDayOrNight(int hour) {
+    private void partDayOrNight(int hour) {
         insertPos(3,0);
         //System.out.println(clock[3][0]);
         if (hour < 12) {
@@ -89,7 +88,7 @@ public class hangleClock {
         }
     }
 
-    private static void partMinute(int minute) {
+    private void partMinute(int minute) {
         int onesMinute = minute %10;
         int tensMinute = minute / 10;
         //십분단위
@@ -117,16 +116,17 @@ public class hangleClock {
 
     }
 
-    private static void makeClock(int hour, int minute) {
+    private void makeClock(int hour, int minute) {
         partHour(hour);
         partDayOrNight(hour);
         partMinute(minute);
     }
-    private static void onColor (int i, int j){
+    private void onColor (int i, int j){
       System.out.print(ANSI_PURPLE + clock[i][j] + ANSI_RESET);
     }
 
-    public static void print() {
+    private void print() {
+
         Collections.sort(posInfo, (e1, e2) ->{
             if(e1[0] == e2[0]){
                 return e1[1] - e2[1];
@@ -134,7 +134,9 @@ public class hangleClock {
                 return e1[0] -e2[0];
             }
         });
+
         int count =0;
+
         for (int i = 0; i < clock.length; i++) {
             for (int j = 0; j < clock[i].length; j++) {
                 if( i == posInfo.get(count)[0] && j ==posInfo.get(count)[1]){
@@ -148,7 +150,9 @@ public class hangleClock {
         }
     }
 
-    public static void main(String[] args) {
+
+    public void clockRun(){
+
         getTime();
         print();
     }
