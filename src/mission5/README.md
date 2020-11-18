@@ -12,8 +12,9 @@
 ```
 - 한글시계
 ```
-- Date, SimpleDateFormat, format
-- 콘솔 출력시 다르게 나타내는 방법(컬러나 강조) 적용해보기
+- Date, SimpleDateFormat, format, LocalDateTime
+- 콘솔 출력시 다르게 나타내는 방법(컬러나 강조) 적용
+- index값을 좌표값처럼 받아서 시계 나타내보기 -> 해당 위치만 다르게 나타내기
 ```
 
 ## 학습
@@ -34,9 +35,13 @@
 
 ### MISSION 6
 
+- List<int[]> 의 경우 sort 람다식 이용하여 작성
+- i, j 값 받아오기
+- 최대한 중복을 없애는 방향으로 시간, 분을 가져오려고 했다.
+- 작은 메서드로 나누는 연습
 
 ## 기타학습 및 개인회고
 - [11일차](https://www.notion.so/11-f0b86774d62e46c885654af1324da013)
-- [12일차]()
-- [13일차]()
+- [12일차](https://www.notion.so/12-cd6b742de7864e81bf8d4e79a45bb626)
+- [13일차](https://www.notion.so/13-1f4a934f8e014515ae2eb6872aef8803)
 - [14일차]()
