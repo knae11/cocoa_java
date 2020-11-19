@@ -39,9 +39,11 @@
 - i, j 값 받아오기
 - 최대한 중복을 없애는 방향으로 시간, 분을 가져오려고 했다.
 - 작은 메서드로 나누는 연습
+- 정각일 때 처리 및 else 지양 (sort 람다식 간결하게) 
+
 
 ## 기타학습 및 개인회고
 - [11일차](https://www.notion.so/11-f0b86774d62e46c885654af1324da013)
 - [12일차](https://www.notion.so/12-cd6b742de7864e81bf8d4e79a45bb626)
 - [13일차](https://www.notion.so/13-1f4a934f8e014515ae2eb6872aef8803)
-- [14일차]()
+- [14일차](https://www.notion.so/14-749a13db3e7c4fe4ad558300119b0599)
