@@ -1,0 +1,46 @@
+# Cocoa Java Mission 7 , 8
+
+## 기간
+- 2020.11.23~11.24
+- 2020.11.25~11.26
+
+## 미션목록
+
+### mission 7 - GUI
+
+> - GUI - AWT, Swing 학습 (AWT 학습을 권장)   [AWT 자바의 정석](https://codechobo.tistory.com/6)
+> - 게임 하나 만들어보기 [게임 참고링크](https://codegym.cc/projects/games)
+> - 추가학습 주제 : 람다와 스트림, for-each, map, filter, 인터페이스, 제네릭
+
+
+### mission 8 - 그림판 만들기
+
+
+## 학습
+
+### mission 7 - GUI
+
+- 빙고 만들기 샘플 ( 자바의 정석 awt 100pg 예제 구현 )
+```
+- 이벤트의 interface와 extends Adaptors의 차이! -> 오버라이드 및 구현의 차이가 있는데..?! 
+interface를 쓰면 다 구현하는게 쓸데 없음...! 그래서, 생긴것이 Adaptors
+- Event Handler의 nested class -> 이게 최선인가?
+```
+- 커밋 메세지 작게 나누는 연습하자!! 
+```
+의식하기!! 메서드 단위로..! 내가 생각하는 것보다 더 작은 단위로 연습해보자.
+```
+- 오목 만들기 샘플 ( 자바의 정석 awt 106pg 예제 구현 )
+```
+- extends Frame implements MouseMotionListener 에서 작동방식..? 
+  의문*100 상속과 인터페이스를 더 공부해야 할 듯..!
+```
+
+### mission 8 - 그림판 만들기
+
+
+## 기타학습 및 개인회고
+- [16일차](https://www.notion.so/16-GUI-c89a7ddfc4ad4abebf442ef3452070b7)
+- [17일차]()
+- [18일차]()
+- [19일차]()
