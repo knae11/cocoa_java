@@ -1,8 +1,7 @@
-# Cocoa Java Mission 7 , 8
+# Cocoa Java Mission 7
 
 ## 기간
 - 2020.11.23~11.24
-- 2020.11.25~11.26
 
 ## 미션목록
 
@@ -12,8 +11,6 @@
 > - 게임 하나 만들어보기 [게임 참고링크](https://codegym.cc/projects/games)
 > - 추가학습 주제 : 람다와 스트림, for-each, map, filter, 인터페이스, 제네릭
 
-
-### mission 8 - 그림판 만들기
 
 
 ## 학습
@@ -44,11 +41,7 @@
 ```
 - AWT의 상속관계에 대한 이해 + 이벤트는 비동기 메서드 방식의 이해가 가장 핵심!!!!
 
-### mission 8 - 그림판 만들기
-
 
 ## 기타학습 및 개인회고
 - [16일차](https://www.notion.so/16-GUI-c89a7ddfc4ad4abebf442ef3452070b7)
 - [17일차](https://www.notion.so/17-c6fe39d780404de0aaa276d5b15784c2)
-- [18일차](https://www.notion.so/18-dc3ef92cffa34ced8302a160b69f657a)
-- [19일차]()

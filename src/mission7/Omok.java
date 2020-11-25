@@ -1,4 +1,4 @@
-package mission7and8;
+package mission7;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;
