@@ -17,10 +17,12 @@ public class DrawingBoard extends Frame {
 
     private void init(){
         setSize(BOARD_WIDTH,BOARD_HEIGHT);
-        add(new SelectSection(BOARD_WIDTH,BOARD_HEIGHT/5));
-        add(new DrawSection());
+        setLayout(new BorderLayout());
+        add("North", new SelectSection());
+        add("Center",new DrawSection());
         setVisible(true);
     }
+
 
     private void bindEvents(){
         addWindowListener(new WindowAdapter() {
