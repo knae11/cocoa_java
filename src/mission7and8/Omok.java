@@ -7,7 +7,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class Omok extends Frame {
-    private Frame f;
 
     private final int LINE_NUM = 9;
     private final int LINE_WIDTH = 30;
