@@ -1,6 +1,8 @@
 package mission7and8;
 
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -41,8 +43,13 @@ public class Omok extends Frame {
         drawBoard(gImg);
     }
 
-
     private void bindEvents() {
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                handleStone(e);
+            }
+        });
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -51,18 +58,29 @@ public class Omok extends Frame {
         });
     }
 
+    public void paint(Graphics g) {
+        System.out.println("Paint method 호출");
+        if (img == null) return;
+        g.drawImage(img, 0, 0, this);
+    }
+
     private void drawBoard(Graphics g) {
         System.out.println("drawBoard 호출");
         for (int i = 0; i < LINE_NUM; i++) {
             g.drawLine(X0, Y0 + i * LINE_WIDTH, X0 + BOARD_SIZE, Y0 + i * LINE_WIDTH);
             g.drawLine(X0 + i * LINE_WIDTH, Y0, X0 + i * LINE_WIDTH, Y0 + BOARD_SIZE);
-        }}
-
-        public void paint (Graphics g){
-            System.out.println("Paint method 호출");
-            if (img == null) return;
-            g.drawImage(img, 0, 0, this);
-
         }
-
     }
+
+    private void handleStone(MouseEvent e){
+        System.out.println(e);
+        int x = e.getX();
+        int y = e.getY();
+        if( x< X0 || y< Y0 || x>BOARD_SIZE || y>BOARD_SIZE ){
+            return;
+        }
+    }
+
+
+
+}
