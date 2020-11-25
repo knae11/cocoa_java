@@ -7,6 +7,8 @@ public class Main {
         Bingo bingo = new Bingo();
         bingo.bingoSample();
          */
+
+        //Omok Sample
         new Omok("Omok Game");
 
     }

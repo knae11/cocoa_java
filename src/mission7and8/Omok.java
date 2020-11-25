@@ -18,6 +18,8 @@ public class Omok extends Frame {
 
     private int X0;
     private int Y0;
+    private int INSET_X;
+    private int INSET_Y;
 
     private int FRAME_WIDTH;
     private int FRAME_HEIGHT;
@@ -35,8 +37,10 @@ public class Omok extends Frame {
         setVisible(true);
         setBackground(Color.lightGray);
         Insets insets = getInsets();
-        X0 = insets.left + LINE_WIDTH;
-        Y0 = insets.top + LINE_WIDTH;
+        INSET_X = insets.left;
+        INSET_Y = insets.top;
+        X0 = INSET_X + LINE_WIDTH;
+        Y0 = INSET_Y + LINE_WIDTH;
         FRAME_WIDTH = BOARD_SIZE + LINE_WIDTH * 2 + insets.left + insets.right;
         FRAME_HEIGHT = BOARD_SIZE + LINE_WIDTH * 2 + insets.top + insets.bottom;
         setSize(FRAME_WIDTH, FRAME_HEIGHT);
@@ -61,13 +65,11 @@ public class Omok extends Frame {
     }
 
     public void paint(Graphics g) {
-        System.out.println("Paint method 호출");
         if (img == null) return;
         g.drawImage(img, 0, 0, this);
     }
 
     private void drawBoard(Graphics g) {
-        System.out.println("drawBoard 호출");
         for (int i = 0; i < LINE_NUM; i++) {
             g.drawLine(X0, Y0 + i * LINE_WIDTH, X0 + BOARD_SIZE, Y0 + i * LINE_WIDTH);
             g.drawLine(X0 + i * LINE_WIDTH, Y0, X0 + i * LINE_WIDTH, Y0 + BOARD_SIZE);
@@ -75,10 +77,11 @@ public class Omok extends Frame {
     }
 
     private void handleStone(MouseEvent e){
-        System.out.println(e);
         int x = e.getX();
         int y = e.getY();
-        if( x< X0 || y< Y0 || x> X0+BOARD_SIZE || y> Y0+BOARD_SIZE ){
+        x = (x/LINE_WIDTH *LINE_WIDTH) + (x %LINE_WIDTH > LINE_WIDTH/2? LINE_WIDTH : 0) + INSET_X - (STONE_SIZE/2);
+        y = (y/LINE_WIDTH *LINE_WIDTH) + (y %LINE_WIDTH > LINE_WIDTH/2? LINE_WIDTH : 0) - (STONE_SIZE/2);
+        if( x< X0 -(LINE_WIDTH/2) || y< Y0 -(LINE_WIDTH/2) || x> X0+BOARD_SIZE || y> Y0+BOARD_SIZE ){
             System.out.println("out");
             return;
         }
@@ -98,6 +101,8 @@ public class Omok extends Frame {
     private void drawWhiteStone(Graphics g, int x, int y){
         g.setColor(Color.white);
         g.fillOval(x,y,STONE_SIZE, STONE_SIZE);
+        g.setColor(Color.black);
+        g.drawOval(x,y,STONE_SIZE, STONE_SIZE);
     }
 
     private void drawBlackStone(Graphics g, int x, int y){
