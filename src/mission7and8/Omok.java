@@ -13,6 +13,8 @@ public class Omok extends Frame {
     private final int LINE_WIDTH = 30;
     private final int BOARD_SIZE = LINE_WIDTH * (LINE_NUM - 1);
     private final int STONE_SIZE = (int) (LINE_WIDTH * 0.8);
+    private final int CLICK_LEFT = 1024;
+    private final int CLICK_RIGHT = 4096;
 
     private int X0;
     private int Y0;
@@ -76,11 +78,30 @@ public class Omok extends Frame {
         System.out.println(e);
         int x = e.getX();
         int y = e.getY();
-        if( x< X0 || y< Y0 || x>BOARD_SIZE || y>BOARD_SIZE ){
+        if( x< X0 || y< Y0 || x> X0+BOARD_SIZE || y> Y0+BOARD_SIZE ){
+            System.out.println("out");
             return;
         }
+        switch(e.getModifiersEx()){
+            case CLICK_LEFT:
+                drawWhiteStone(gImg, x, y);
+                break;
+            case CLICK_RIGHT:
+                drawBlackStone(gImg, x, y);
+                break;
+            default:
+                return;
+        }
+        repaint();
     }
 
+    private void drawWhiteStone(Graphics g, int x, int y){
+        g.setColor(Color.white);
+        g.fillOval(x,y,STONE_SIZE, STONE_SIZE);
+    }
 
-
+    private void drawBlackStone(Graphics g, int x, int y){
+        g.setColor(Color.black);
+        g.fillOval(x,y,STONE_SIZE, STONE_SIZE);
+    }
 }
