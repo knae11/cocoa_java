@@ -40,7 +40,7 @@ public class SelectSection extends Panel {
             colorsButtons[i].addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    Button btn = (Button)e.getSource();
+                    Button btn = (Button) e.getSource();
                     setClickedData.setColor(btn.getLabel());
                 }
             });
@@ -52,6 +52,7 @@ public class SelectSection extends Panel {
         optionsButtons = new Button[options.length];
         for (int i = 0; i < optionsButtons.length; i++) {
             optionsButtons[i] = new Button(options[i]);
+
             add(optionsButtons[i]);
         }
     }
@@ -60,6 +61,13 @@ public class SelectSection extends Panel {
         figuresButtons = new Button[figures.length];
         for (int i = 0; i < figuresButtons.length; i++) {
             figuresButtons[i] = new Button(figures[i]);
+            figuresButtons[i].addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    Button btn = (Button) e.getSource();
+                    setClickedData.setFigure(btn.getLabel());
+                }
+            });
             add(figuresButtons[i]);
         }
     }

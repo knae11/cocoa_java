@@ -3,7 +3,17 @@ package mission8;
 import java.awt.*;
 
 public class SetClickedData {
+    private String figure  = "Free";
     private Color color;
+
+    public void setFigure(String figure){
+        this.figure = figure;
+        System.out.println(this.figure);
+    }
+    public String getFigure(){
+        return this.figure;
+    }
+
 
     public void setColor(String color){
         switch (color){
@@ -25,7 +35,6 @@ public class SetClickedData {
             default:
                 break;
         }
-        System.out.println(this.color);
     }
     public Color getColor(){
         return this.color;

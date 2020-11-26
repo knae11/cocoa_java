@@ -11,8 +11,8 @@ public class DrawingBoard extends Frame {
 
     public DrawingBoard(){
         super("DrawingBoard by Nana");
-        SetClickedData setClickedData = new SetClickedData();
-        init(setClickedData);
+        SetClickedData data = new SetClickedData();
+        init(data);
         bindEvents();
     }
 
