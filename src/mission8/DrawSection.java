@@ -10,8 +10,6 @@ public class DrawSection extends Canvas {
 
     private int x;
     private int y;
-    private int xForFigure;
-    private int yForFigure;
 
     private boolean isFill;
 
@@ -26,11 +24,6 @@ public class DrawSection extends Canvas {
 
     private void bindEvents() {
         addMouseListener(new MouseAdapter() {
-            //            @Override
-//            public void mouseMoved(MouseEvent e){
-//                x = e.getX();
-//                y = e.getY();
-//            }
             @Override
             public void mouseClicked(MouseEvent e) {
                 x = e.getX();
