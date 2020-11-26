@@ -5,7 +5,6 @@ import java.awt.*;
 public class SetClickedData {
     private Color color;
 
-    //TODO: color 셋팅하기
     public void setColor(String color){
         switch (color){
             case "RED":
@@ -28,4 +27,8 @@ public class SetClickedData {
         }
         System.out.println(this.color);
     }
+    public Color getColor(){
+        return this.color;
+    }
+
 }

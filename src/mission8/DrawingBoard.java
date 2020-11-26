@@ -11,15 +11,16 @@ public class DrawingBoard extends Frame {
 
     public DrawingBoard(){
         super("DrawingBoard by Nana");
-        init();
+        SetClickedData setClickedData = new SetClickedData();
+        init(setClickedData);
         bindEvents();
     }
 
-    private void init(){
+    private void init(SetClickedData data){
         setSize(BOARD_WIDTH,BOARD_HEIGHT);
         setLayout(new BorderLayout());
-        add("North", new SelectSection());
-        add("Center",new DrawSection());
+        add("North", new SelectSection(data));
+        add("Center",new DrawSection(data));
         setVisible(true);
     }
 

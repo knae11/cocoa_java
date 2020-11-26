@@ -21,8 +21,8 @@ public class SelectSection extends Panel {
             "ERASE", "FILL"
     };
 
-    public SelectSection() {
-        setClickedData = new SetClickedData();
+    public SelectSection(SetClickedData data) {
+        setClickedData = data;
         setBackground(Color.lightGray);
         setButtons();
     }
