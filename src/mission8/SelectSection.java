@@ -52,7 +52,13 @@ public class SelectSection extends Panel {
         optionsButtons = new Button[options.length];
         for (int i = 0; i < optionsButtons.length; i++) {
             optionsButtons[i] = new Button(options[i]);
-
+            optionsButtons[i].addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    Button btn = (Button) e.getSource();
+                    setClickedData.setOption(btn.getLabel());
+                }
+            });
             add(optionsButtons[i]);
         }
     }

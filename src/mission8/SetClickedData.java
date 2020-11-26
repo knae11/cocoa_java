@@ -5,6 +5,7 @@ import java.awt.*;
 public class SetClickedData {
     private String figure  = "Free";
     private Color color;
+    private boolean isFill = false;
 
     public void setFigure(String figure){
         this.figure = figure;
@@ -12,6 +13,19 @@ public class SetClickedData {
     }
     public String getFigure(){
         return this.figure;
+    }
+
+    public void setOption(String option){
+        if (option.equals("ERASE")) {
+            this.color = Color.ORANGE;
+        }
+        if (option.equals("FILL")) {
+            this.isFill = !this.isFill;
+        }
+    }
+
+    public boolean getIsFill(){
+        return this.isFill;
     }
 
 

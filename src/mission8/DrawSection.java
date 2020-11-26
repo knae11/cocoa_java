@@ -7,8 +7,13 @@ import java.awt.event.MouseMotionAdapter;
 
 public class DrawSection extends Canvas {
 
+
     private int x;
     private int y;
+    private int xForFigure;
+    private int yForFigure;
+
+    private boolean isFill;
 
     private SetClickedData setClickedData;
 
@@ -21,6 +26,11 @@ public class DrawSection extends Canvas {
 
     private void bindEvents() {
         addMouseListener(new MouseAdapter() {
+            //            @Override
+//            public void mouseMoved(MouseEvent e){
+//                x = e.getX();
+//                y = e.getY();
+//            }
             @Override
             public void mouseClicked(MouseEvent e) {
                 x = e.getX();
@@ -44,22 +54,29 @@ public class DrawSection extends Canvas {
 
     public void paint(Graphics g) {
         g.setColor(setClickedData.getColor());
+        isFill = setClickedData.getIsFill();
         switch (setClickedData.getFigure()) {
             case "Square":
-                g.drawRect(x, y, 150, 300);
+                if (isFill) {
+                    g.fillRect(x, y, 100, 100);
+                }
+                g.drawRect(x, y, 100, 100);
                 break;
             case "Circle":
+                if (isFill) {
+                    g.fillOval(x, y, 100, 100);
+                }
                 g.drawOval(x, y, 100, 100);
                 break;
             case "Line":
-                g.drawLine(x, y, x + 50, y + 50);
+                g.drawLine(x, y, x + 100, y + 100);
                 break;
             case "Arc":
-                g.drawArc(x, y, 100, 40, 30, 130);
+                g.drawArc(x, y, 100, 100, 30, 150);
                 break;
             case "Free":
             default:
-                g.drawString("*", x, y);
+                g.fillOval(x, y, 10, 10);
                 break;
         }
     }
