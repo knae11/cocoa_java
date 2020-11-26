@@ -1,12 +1,15 @@
 package mission8;
 
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class SelectSection extends Panel {
 
     private Button[] figuresButtons;
     private Button[] colorsButtons;
     private Button[] optionsButtons;
+    private SetClickedData setClickedData;
 
     private final String[] figures = {
             "Free", "Square", "Circle", "Line", "Arc"
@@ -19,6 +22,7 @@ public class SelectSection extends Panel {
     };
 
     public SelectSection() {
+        setClickedData = new SetClickedData();
         setBackground(Color.lightGray);
         setButtons();
     }
@@ -27,14 +31,19 @@ public class SelectSection extends Panel {
         setFiguresButtons();
         setColorsButtons();
         setOptionsButtons();
-
-
     }
 
     private void setColorsButtons() {
         colorsButtons = new Button[colors.length];
         for (int i = 0; i < colorsButtons.length; i++) {
             colorsButtons[i] = new Button(colors[i]);
+            colorsButtons[i].addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    Button btn = (Button)e.getSource();
+                    setClickedData.setColor(btn.getLabel());
+                }
+            });
             add(colorsButtons[i]);
         }
     }
