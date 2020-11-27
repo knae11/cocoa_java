@@ -1,6 +1,10 @@
 package Algorithm.week4;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class AlgoWeek4 {
+
     //https://leetcode.com/problems/two-sum/
     public static int[] twoSum(int[] nums, int target) {
         int[] answer = new int[2];
@@ -34,7 +38,8 @@ public class AlgoWeek4 {
     }
 
     //https://leetcode.com/problems/palindrome-number/
-    //내 풀이 좀 별로인 것 같은데ㅠ 다른 풀이 보니까 -일땐 그냥 false처리하고 양수인 경우 위에 숫자 거꾸로 로직 비교하면 될 듯
+    //내 풀이 좀 별로인 것 같은데ㅠ
+    //다른 풀이 보니까 -일땐 그냥 false 처리하고 양수인 경우 위에 숫자 거꾸로 로직 비교하면 될 듯
     public static boolean isPalindrome(int x) {
         boolean answer = false;
         String reversedX = "";
@@ -49,7 +54,31 @@ public class AlgoWeek4 {
         return answer;
     }
 
+    //https://leetcode.com/problems/roman-to-integer/
+    //음.. 다른 풀이 보고싶다..!
+    public static int romanToInt(String s) {
+        int answer = 0;
+
+        Map<String, Integer> romanNum = new HashMap<>();
+        romanNum.put("I", 1);
+        romanNum.put("V", 5);
+        romanNum.put("X", 10);
+        romanNum.put("L", 50);
+        romanNum.put("C", 100);
+        romanNum.put("D", 500);
+        romanNum.put("M", 1000);
+        String[] sArr = s.split("");
+        for ( int i = sArr.length-1; i > -1 ; i--){
+            if( i != sArr.length-1 && romanNum.get(sArr[i]) < romanNum.get(sArr[i+1])) {
+                answer -= romanNum.get(sArr[i]);
+                continue;
+            }
+            answer += romanNum.get(sArr[i]);
+        }
+        return answer;
+    }
+
     public static void main(String[] args) {
-        System.out.println((isPalindrome( 121)));
+        System.out.println(romanToInt( "MCMXCIV"));
     }
 }
