@@ -33,8 +33,23 @@ public class AlgoWeek4 {
         return (int)answer;
     }
 
+    //https://leetcode.com/problems/palindrome-number/
+    //내 풀이 좀 별로인 것 같은데ㅠ 다른 풀이 보니까 -일땐 그냥 false처리하고 양수인 경우 위에 숫자 거꾸로 로직 비교하면 될 듯
+    public static boolean isPalindrome(int x) {
+        boolean answer = false;
+        String reversedX = "";
+        String stringX = String.valueOf(x);
+        String[] stringArr = stringX.split("");
+        for ( int i = stringArr.length-1; i > -1; i-- ){
+            reversedX += stringArr[i];
+        }
+        if ( stringX.equals(reversedX) ){
+            answer = true;
+        }
+        return answer;
+    }
 
     public static void main(String[] args) {
-        System.out.println((reverse( 1534236469)));
+        System.out.println((isPalindrome( 121)));
     }
 }
