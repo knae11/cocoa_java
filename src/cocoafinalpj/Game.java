@@ -10,10 +10,15 @@ import javax.swing.JFrame;
 
 public class Game extends JFrame {
 
-    private static final int BOARD_WIDTH = 960;
-    private static final int BOARD_HEIGHT = 540;
+    private static final int BOARD_WIDTH = 1200;
+    private static final int BOARD_HEIGHT = 800;
+    private static final int INIT_X = 100;
+    private static final int INIT_Y = 600;
+    private static final int CHAR_WIDTH =200;
 
     private BufferedImage backgroundImage;
+    private BufferedImage characterOne;
+    private BufferedImage characterTwo;
     private Image image;
     private Graphics gImg;
 
@@ -32,6 +37,8 @@ public class Game extends JFrame {
 
         try {
             backgroundImage = ImageIO.read(new File("./resources/image/background.jpg"));
+            characterOne = ImageIO.read(new File("resources/image/fox/leftwalk1.png"));
+            characterTwo = ImageIO.read(new File("resources/image/fox/rightwalk1.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -47,6 +54,8 @@ public class Game extends JFrame {
 
     private void backgroundDraw(Graphics g) {
         g.drawImage(backgroundImage, 0, 0, null);
+        g.drawImage(characterOne, INIT_X,INIT_Y, null);
+        g.drawImage(characterTwo, BOARD_WIDTH-(INIT_X+CHAR_WIDTH), INIT_Y, null);
         this.repaint();
     }
 }
