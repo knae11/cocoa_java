@@ -1,27 +1,19 @@
 package cocoafinalpj;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-import javax.swing.JPanel;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
-public class Character extends JPanel {
+public class Character  {
 
-    private BufferedImage character;
+    private Image character;
+    public int playerSpeed = 30;
 
     public Character() {
         super();
     }
 
-    public BufferedImage makeCharacter(String pathname) {
-        try {
-            character = ImageIO.read(new File(pathname));
-            return character;
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("exception : " + e.getMessage());
-        }
+    public Image makeCharacter(String pathname) {
+        character = new ImageIcon(pathname).getImage();
         return character;
     }
 
