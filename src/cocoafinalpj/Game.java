@@ -52,8 +52,8 @@ public class Game extends JFrame {
 
     private void screenDraw(Graphics g) {
         g.drawImage(backgroundImage, 0, 0, null);
-        playerOne.playerOneDraw(g);
-        playerTwo.playerTwoDraw(g);
+        playerOne.playerDraw(g);
+        playerTwo.playerDraw(g);
         this.repaint();
     }
 

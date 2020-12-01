@@ -9,8 +9,6 @@ public class PlayerTwo extends Character implements Runnable {
     private int playerX = Main.BOARD_WIDTH-(Main.INIT_X+Main.CHAR_WIDTH);
     private int playerY = Main.INIT_Y;
 
-    private boolean up, left, down, right, hit;
-
     private Image playerTwo;
     private String pathname = "src/cocoafinalpj/image/fox/rightwalk1.png";
     public PlayerTwo(){
@@ -34,27 +32,8 @@ public class PlayerTwo extends Character implements Runnable {
         }
     }
 
-    public void setUp(boolean up) {
-        this.up = up;
-    }
 
-    public void setDown(boolean down) {
-        this.down = down;
-    }
-
-    public void setLeft(boolean left) {
-        this.left = left;
-    }
-
-    public void setRight(boolean right) {
-        this.right = right;
-    }
-
-    public void paint(Graphics g){
-        playerTwoDraw(g);
-    }
-
-    public void playerTwoDraw(Graphics g){
+    public void playerDraw(Graphics g){
         g.drawImage(playerTwo, playerX, playerY, null);
     }
 
@@ -63,7 +42,7 @@ public class PlayerTwo extends Character implements Runnable {
         while(true){
             try {
                 keyProcess();
-                System.out.println("thread 2 going");
+                //System.out.println("thread 2 going");
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
