@@ -10,12 +10,12 @@ public class PlayerTwo extends Character implements Runnable {
     private int playerY = Main.INIT_Y;
 
     private FoxStatus foxStatus;
-    private Image playerTwo;
-    private Image playerTwoJump;
-    private Image playerTwoDown;
-    private String defaultImage = "src/cocoafinalpj/image/fox/rightwalk1.png";
-    private String jumpImage = "src/cocoafinalpj/image/fox/jump_right.png";
-    private String downImage ="src/cocoafinalpj/image/fox/down_right.png";
+    private final Image playerTwo;
+    private final Image playerTwoJump;
+    private final Image playerTwoDown;
+    private final String defaultImage = "src/cocoafinalpj/image/fox/walk_right.png";
+    private final String jumpImage = "src/cocoafinalpj/image/fox/jump_right.png";
+    private final String downImage ="src/cocoafinalpj/image/fox/down_right.png";
 
     public PlayerTwo() {
         super();

@@ -8,13 +8,13 @@ public class PlayerOne extends Character implements Runnable {
     private int playerX = Main.INIT_X;
     private int playerY = Main.INIT_Y;
     private FoxStatus foxStatus;
-    private Image playerOne;
-    private Image playerOneJump;
-    private Image playerOneDown;
+    private final Image playerOne;
+    private final Image playerOneJump;
+    private final Image playerOneDown;
 
-    private String pathname = "src/cocoafinalpj/image/fox/leftwalk1.png";
-    private String jumpImage = "src/cocoafinalpj/image/fox/jump_left.png";
-    private String downImage ="src/cocoafinalpj/image/fox/down_left.png";
+    private final String pathname = "src/cocoafinalpj/image/fox/walk_left.png";
+    private final String jumpImage = "src/cocoafinalpj/image/fox/jump_left.png";
+    private final String downImage = "src/cocoafinalpj/image/fox/down_left.png";
 
     public PlayerOne() {
         super();
@@ -45,20 +45,21 @@ public class PlayerOne extends Character implements Runnable {
     }
 
 
-    public void playerDraw(Graphics g) {switch (foxStatus) {
-        case UP:
-            g.drawImage(playerOneJump, playerX, playerY, null);
-            break;
-        case WALK_RIGHT:
-        case WALK_LEFT:
-            g.drawImage(playerOne, playerX, playerY, null);
-            break;
-        case DOWN:
-            g.drawImage(playerOneDown, playerX, playerY, null);
-            break;
-        default:
-            break;
-    }
+    public void playerDraw(Graphics g) {
+        switch (foxStatus) {
+            case UP:
+                g.drawImage(playerOneJump, playerX, playerY, null);
+                break;
+            case WALK_RIGHT:
+            case WALK_LEFT:
+                g.drawImage(playerOne, playerX, playerY, null);
+                break;
+            case DOWN:
+                g.drawImage(playerOneDown, playerX, playerY, null);
+                break;
+            default:
+                break;
+        }
     }
 
     @Override
