@@ -17,8 +17,8 @@ public class Game extends JFrame {
     private static final int CHAR_WIDTH =200;
 
     private BufferedImage backgroundImage;
-    private BufferedImage characterOne;
-    private BufferedImage characterTwo;
+    private BufferedImage playerOne;
+    private BufferedImage playerTwo;
     private Image image;
     private Graphics gImg;
 
@@ -37,8 +37,8 @@ public class Game extends JFrame {
 
         try {
             backgroundImage = ImageIO.read(new File("./resources/image/background.jpg"));
-            characterOne = ImageIO.read(new File("resources/image/fox/leftwalk1.png"));
-            characterTwo = ImageIO.read(new File("resources/image/fox/rightwalk1.png"));
+            playerOne = new PlayerOne().getPlayerOne();
+            playerTwo = new PlayerTwo().getPlayerTwo();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -54,8 +54,8 @@ public class Game extends JFrame {
 
     private void backgroundDraw(Graphics g) {
         g.drawImage(backgroundImage, 0, 0, null);
-        g.drawImage(characterOne, INIT_X,INIT_Y, null);
-        g.drawImage(characterTwo, BOARD_WIDTH-(INIT_X+CHAR_WIDTH), INIT_Y, null);
+        g.drawImage(playerOne, INIT_X,INIT_Y, null);
+        g.drawImage(playerTwo, BOARD_WIDTH-(INIT_X+CHAR_WIDTH), INIT_Y, null);
         this.repaint();
     }
 }
