@@ -18,12 +18,12 @@ public class Game extends JFrame {
 
     public Game() {
         playerOne = new PlayerOne();
-        Thread p1 = new Thread(playerOne);
+        //Thread p1 = new Thread(playerOne);
         playerTwo = new PlayerTwo();
-        Thread p2 = new Thread(playerTwo);
+      //  Thread p2 = new Thread(playerTwo);
         ball = new Ball(playerOne, playerTwo);
-        p1.start();
-        p2.start();
+        //p1.start();
+        //p2.start();
         initUI();
         setResource();
         bindEvents();

@@ -4,11 +4,11 @@ import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
-public abstract class Character implements Runnable {
+public abstract class Character {
 
     private Image character;
     public final String path = "src/cocoafinalpj/image/character/";
-    public int playerSpeed = 30;
+    public int playerSpeed = 5;
     public boolean up, left, down, right, hit;
 
     public Character() {
@@ -39,18 +39,18 @@ public abstract class Character implements Runnable {
         this.hit = hit;
     }
 
-    @Override
-    public void run() {
-        while (true) {
-            try {
-                keyProcess();
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-                return;
-            }
-        }
-    }
+//    @Override
+//    public void run() {
+//        while (true) {
+//            try {
+//                keyProcess();
+//                Thread.sleep(100);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//                return;
+//            }
+//        }
+//    }
 
     abstract void keyProcess();
 

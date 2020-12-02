@@ -71,25 +71,33 @@ public class Ball {
             goDownY = true;
         }
         //네트
-        if (Math.abs((Main.BOARD_WIDTH - Main.NET_WIDTH) / 2 - (ballX + Main.BALL_SIZE))<ballSpeed
+        if (Math.abs((Main.BOARD_WIDTH - Main.NET_WIDTH) / 2 - (ballX + Main.BALL_SIZE)) < ballSpeed
             && ballY > Main.INIT_Y - Main.NET_HEIGHT) {
             goLeftX = true;
         }
-        if(Math.abs((Main.BOARD_WIDTH + Main.NET_WIDTH)/2 - ballX) < ballSpeed &&
+        if (Math.abs((Main.BOARD_WIDTH + Main.NET_WIDTH) / 2 - ballX) < ballSpeed &&
             ballY > Main.INIT_Y - Main.NET_HEIGHT) {
             goLeftX = false;
         }
         //플레이어
-        if (Math.abs(ballX - (p1.getPlayerX() + Main.PLAYER_SIZE - 30)) < 20
-            && Math.abs(ballY + Main.BALL_SIZE / 2 + 10 - p1.getPlayerY()) < 20) {
+        //1P
+        if (Math.abs((ballX + Main.BALL_SIZE / 2) - (p1.getPlayerX() + Main.PLAYER_SIZE)) < Main.BALL_SIZE/2
+            && Math.abs((ballY + Main.BALL_SIZE / 2) - p1.getPlayerY()) < Main.BALL_SIZE/2) {
             goDownY = false;
         }
-
-        if (Math.abs(ballX + Main.PLAYER_SIZE - 30 - p1.getPlayerX()) < 20
-            && Math.abs(ballY + Main.BALL_SIZE / 2 + 10 - p1.getPlayerY()) < 20) {
+        if (Math.abs((ballX + Main.BALL_SIZE / 2) - p1.getPlayerX() ) < Main.BALL_SIZE/2
+            && Math.abs((ballY + Main.BALL_SIZE / 2) - p1.getPlayerY()) < Main.BALL_SIZE/2) {
             goDownY = false;
         }
-
+        //2P
+        if (Math.abs(p2.getPlayerX()-(ballX + Main.BALL_SIZE / 2)) < Main.BALL_SIZE/2
+            && Math.abs((ballY + Main.BALL_SIZE / 2) - p2.getPlayerY()) < Main.BALL_SIZE/2) {
+            goDownY = false;
+        }
+        if (Math.abs(p2.getPlayerX()+Main.PLAYER_SIZE-(ballX + Main.BALL_SIZE / 2)) < Main.BALL_SIZE/2
+            && Math.abs((ballY + Main.BALL_SIZE / 2) - p2.getPlayerY()) < Main.BALL_SIZE/2) {
+            goDownY = false;
+        }
     }
 
 }

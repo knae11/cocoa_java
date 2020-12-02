@@ -68,6 +68,7 @@ public class PlayerOne extends Character  {
             default:
                 break;
         }
+        keyProcess();
     }
 
 

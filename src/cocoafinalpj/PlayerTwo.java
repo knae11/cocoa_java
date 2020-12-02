@@ -70,6 +70,7 @@ public class PlayerTwo extends Character {
             default:
                 break;
         }
+        keyProcess();
     }
 
 
