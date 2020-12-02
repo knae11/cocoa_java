@@ -27,7 +27,6 @@ public class Ball {
         moveBall();
     }
 
-    //TODO: 공 움직이기 구현하기!
     private void moveBall() {
         if (goDownY) {
             ballY += ballSpeed;
@@ -57,7 +56,48 @@ public class Ball {
     }
 
     private void determineBallDirection() {
-        //프레임
+        frameBounce();
+        netBounce();
+        pOneBounce();
+        pTwoBounce();
+    }
+
+    private void pTwoBounce() {
+        if (Math.abs(p2.getPlayerX() - (ballX + Main.BALL_SIZE / 2)) < Main.BALL_SIZE / 2
+            && Math.abs((ballY + Main.BALL_SIZE / 2) - p2.getPlayerY()) < Main.BALL_SIZE / 2) {
+            goDownY = false;
+        }
+        if (Math.abs(p2.getPlayerX() + Main.PLAYER_SIZE - (ballX + Main.BALL_SIZE / 2))
+            < Main.BALL_SIZE / 2
+            && Math.abs((ballY + Main.BALL_SIZE / 2) - p2.getPlayerY()) < Main.BALL_SIZE / 2) {
+            goDownY = false;
+        }
+    }
+
+    private void pOneBounce() {
+        if (Math.abs((ballX + Main.BALL_SIZE / 2) - (p1.getPlayerX() + Main.PLAYER_SIZE))
+            < Main.BALL_SIZE / 2
+            && Math.abs((ballY + Main.BALL_SIZE / 2) - p1.getPlayerY()) < Main.BALL_SIZE / 2) {
+            goDownY = false;
+        }
+        if (Math.abs((ballX + Main.BALL_SIZE / 2) - p1.getPlayerX()) < Main.BALL_SIZE / 2
+            && Math.abs((ballY + Main.BALL_SIZE / 2) - p1.getPlayerY()) < Main.BALL_SIZE / 2) {
+            goDownY = false;
+        }
+    }
+
+    private void netBounce() {
+        if (Math.abs((Main.BOARD_WIDTH - Main.NET_WIDTH) / 2 - (ballX + Main.BALL_SIZE)) < ballSpeed
+            && ballY > Main.INIT_Y - Main.NET_HEIGHT) {
+            goLeftX = true;
+        }
+        if (Math.abs((Main.BOARD_WIDTH + Main.NET_WIDTH) / 2 - ballX) < ballSpeed &&
+            ballY > Main.INIT_Y - Main.NET_HEIGHT) {
+            goLeftX = false;
+        }
+    }
+
+    private void frameBounce() {
         if (ballX + Main.BALL_SIZE == Main.BOARD_WIDTH) {
             goLeftX = true;
         }
@@ -69,34 +109,6 @@ public class Ball {
         }
         if (ballY == 0) {
             goDownY = true;
-        }
-        //네트
-        if (Math.abs((Main.BOARD_WIDTH - Main.NET_WIDTH) / 2 - (ballX + Main.BALL_SIZE)) < ballSpeed
-            && ballY > Main.INIT_Y - Main.NET_HEIGHT) {
-            goLeftX = true;
-        }
-        if (Math.abs((Main.BOARD_WIDTH + Main.NET_WIDTH) / 2 - ballX) < ballSpeed &&
-            ballY > Main.INIT_Y - Main.NET_HEIGHT) {
-            goLeftX = false;
-        }
-        //플레이어
-        //1P
-        if (Math.abs((ballX + Main.BALL_SIZE / 2) - (p1.getPlayerX() + Main.PLAYER_SIZE)) < Main.BALL_SIZE/2
-            && Math.abs((ballY + Main.BALL_SIZE / 2) - p1.getPlayerY()) < Main.BALL_SIZE/2) {
-            goDownY = false;
-        }
-        if (Math.abs((ballX + Main.BALL_SIZE / 2) - p1.getPlayerX() ) < Main.BALL_SIZE/2
-            && Math.abs((ballY + Main.BALL_SIZE / 2) - p1.getPlayerY()) < Main.BALL_SIZE/2) {
-            goDownY = false;
-        }
-        //2P
-        if (Math.abs(p2.getPlayerX()-(ballX + Main.BALL_SIZE / 2)) < Main.BALL_SIZE/2
-            && Math.abs((ballY + Main.BALL_SIZE / 2) - p2.getPlayerY()) < Main.BALL_SIZE/2) {
-            goDownY = false;
-        }
-        if (Math.abs(p2.getPlayerX()+Main.PLAYER_SIZE-(ballX + Main.BALL_SIZE / 2)) < Main.BALL_SIZE/2
-            && Math.abs((ballY + Main.BALL_SIZE / 2) - p2.getPlayerY()) < Main.BALL_SIZE/2) {
-            goDownY = false;
         }
     }
 
