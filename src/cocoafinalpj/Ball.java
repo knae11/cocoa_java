@@ -9,12 +9,12 @@ public class Ball {
     private Image ball;
     private int ballX = 300;
     private int ballY = 300;
-    private int ballSpeed = 2;
-    private int ballSpeedUp = ballSpeed * 2;
+    private final int ballSpeed = 3;
+    private final int ballSpeedUp = ballSpeed * 2;
     boolean goLeftX = true;
     boolean goDownY = true;
-    private PlayerOne p1;
-    private PlayerTwo p2;
+    private final PlayerOne p1;
+    private final PlayerTwo p2;
 
     public Ball(PlayerOne p1, PlayerTwo p2) {
         ball = new ImageIcon("src/cocoafinalpj/image/ball.png").getImage();
@@ -24,18 +24,15 @@ public class Ball {
 
     public void ballDraw(Graphics g) {
         g.drawImage(ball, ballX, ballY, null);
-        if(Math.abs(ballX - (p1.getPlayerX()+150))<50 && Math.abs(ballY - p1.getPlayerY())<30){
-            System.out.println("hititititi");
-        }
-        //moveBall();
+        moveBall();
     }
 
     //TODO: 공 움직이기 구현하기!
     private void moveBall() {
         if (goDownY) {
             ballY += ballSpeed;
-            if (ballY > Main.BOARD_HEIGHT) {
-                ballY = Main.BOARD_HEIGHT;
+            if (ballY + Main.BALL_SIZE > Main.BOARD_HEIGHT) {
+                ballY = Main.BOARD_HEIGHT - Main.BALL_SIZE;
             }
         } else {
             ballY -= ballSpeed;
@@ -44,14 +41,14 @@ public class Ball {
             }
         }
         if (goLeftX) {
-            ballX += ballSpeed;
-            if (ballX > Main.BOARD_WIDTH) {
-                ballX = Main.BOARD_WIDTH;
-            }
-        } else {
             ballX -= ballSpeed;
             if (ballX < 0) {
                 ballX = 0;
+            }
+        } else {
+            ballX += ballSpeed;
+            if (ballX + Main.BALL_SIZE > Main.BOARD_WIDTH) {
+                ballX = Main.BOARD_WIDTH - Main.BALL_SIZE;
             }
 
         }
@@ -62,10 +59,10 @@ public class Ball {
     private void determineBallDirection() {
         //프레임
         if (ballX + Main.BALL_SIZE == Main.BOARD_WIDTH) {
-            goLeftX = false;
+            goLeftX = true;
         }
         if (ballX == 0) {
-            goLeftX = true;
+            goLeftX = false;
         }
         if (ballY + Main.BALL_SIZE == Main.BOARD_HEIGHT) {
             goDownY = false;
@@ -74,21 +71,23 @@ public class Ball {
             goDownY = true;
         }
         //네트
-        if (ballX + Main.BALL_SIZE < Main.BOARD_WIDTH / 2 - Main.NET_WIDTH / 2 + ballSpeed &&
-            ballX + Main.BALL_SIZE > Main.BOARD_WIDTH / 2 - Main.NET_WIDTH / 2 - ballSpeed
+        if (Math.abs((Main.BOARD_WIDTH - Main.NET_WIDTH) / 2 - (ballX + Main.BALL_SIZE))<ballSpeed
             && ballY > Main.INIT_Y - Main.NET_HEIGHT) {
-            goLeftX = false;
-        }
-        if (ballX < Main.BOARD_WIDTH / 2 + Main.NET_WIDTH / 2 + ballSpeed &&
-            ballX > Main.BOARD_WIDTH / 2 + Main.NET_WIDTH / 2 - ballSpeed &&
-            ballY > Main.INIT_Y - Main.NET_HEIGHT) {
             goLeftX = true;
         }
+        if(Math.abs((Main.BOARD_WIDTH + Main.NET_WIDTH)/2 - ballX) < ballSpeed &&
+            ballY > Main.INIT_Y - Main.NET_HEIGHT) {
+            goLeftX = false;
+        }
         //플레이어
-        System.out.println("p1 : " + p1.getPlayerX()+", "+ p1.getPlayerY() +"// ball : "+ ballX + ", "+ ballY);
-        if (p1.getPlayerX() + 150 < ballX && ballX < p1.getPlayerX() + 200
-            && p1.getPlayerY() - ballSpeed < ballY && ballY < p1.getPlayerY() + ballSpeed) {
-            goDownY= false;
+        if (Math.abs(ballX - (p1.getPlayerX() + Main.PLAYER_SIZE - 30)) < 20
+            && Math.abs(ballY + Main.BALL_SIZE / 2 + 10 - p1.getPlayerY()) < 20) {
+            goDownY = false;
+        }
+
+        if (Math.abs(ballX + Main.PLAYER_SIZE - 30 - p1.getPlayerX()) < 20
+            && Math.abs(ballY + Main.BALL_SIZE / 2 + 10 - p1.getPlayerY()) < 20) {
+            goDownY = false;
         }
 
     }
