@@ -7,6 +7,8 @@ import javax.swing.ImageIcon;
 public abstract class Character implements Runnable {
 
     private Image character;
+    private int playerX;
+    private int playerY;
 
     public int playerSpeed = 30;
     public boolean up, left, down, right, hit;
@@ -19,6 +21,13 @@ public abstract class Character implements Runnable {
         return character;
     }
 
+    public int getPlayerX() {
+        return playerX;
+    }
+
+    public int getPlayerY() {
+        return playerY;
+    }
 
     public void setUp(boolean up) {
         this.up = up;
@@ -39,6 +48,7 @@ public abstract class Character implements Runnable {
     public void setHit(boolean hit) {
         this.hit = hit;
     }
+
     @Override
     public void run() {
         while (true) {
@@ -51,6 +61,8 @@ public abstract class Character implements Runnable {
             }
         }
     }
+
     abstract void keyProcess();
+
     abstract void playerDraw(Graphics g);
 }

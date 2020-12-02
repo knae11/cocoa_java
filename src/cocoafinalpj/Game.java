@@ -21,7 +21,7 @@ public class Game extends JFrame {
         Thread p1 = new Thread(playerOne);
         playerTwo = new PlayerTwo();
         Thread p2 = new Thread(playerTwo);
-        ball = new Ball();
+        ball = new Ball(playerOne, playerTwo);
         p1.start();
         p2.start();
         initUI();

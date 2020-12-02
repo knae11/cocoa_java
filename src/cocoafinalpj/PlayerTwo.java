@@ -26,6 +26,7 @@ public class PlayerTwo extends Character implements Runnable {
 
     }
 
+
     public void keyProcess() {
         if (up && playerY - playerSpeed > 0) {
             playerY -= playerSpeed;
