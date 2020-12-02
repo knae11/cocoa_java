@@ -35,6 +35,11 @@ public class Ball {
         } else {
             ballX -= ballSpeed;
         }
+        determineBallDirection();
+
+    }
+
+    private void determineBallDirection() {
         if (ballX + Main.BALL_SIZE == Main.BOARD_WIDTH) {
             goLeftX = false;
         }
@@ -47,6 +52,15 @@ public class Ball {
         if (ballY == 0) {
             goDownY = true;
         }
+        if (ballX + Main.BALL_SIZE == Main.BOARD_WIDTH / 2 - Main.NET_WIDTH / 2
+            && ballY > 300) {
+            goLeftX = false;
+        }
+        if (ballX == Main.BOARD_WIDTH / 2 + Main.NET_WIDTH / 2
+            && ballY > 300) {
+            goLeftX = true;
+        }
+
     }
 
 }
