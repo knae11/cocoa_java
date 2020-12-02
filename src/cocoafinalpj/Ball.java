@@ -7,8 +7,8 @@ import javax.swing.ImageIcon;
 public class Ball {
 
     private Image ball;
-    private int ballX = 100;
-    private int ballY = 100;
+    private int ballX = 300;
+    private int ballY = 300;
     private int ballSpeed = 2;
     private int ballSpeedUp = ballSpeed * 2;
     boolean goLeftX = true;
@@ -24,30 +24,33 @@ public class Ball {
 
     public void ballDraw(Graphics g) {
         g.drawImage(ball, ballX, ballY, null);
-        moveBall();
+        if(Math.abs(ballX - (p1.getPlayerX()+150))<50 && Math.abs(ballY - p1.getPlayerY())<30){
+            System.out.println("hititititi");
+        }
+        //moveBall();
     }
 
     //TODO: 공 움직이기 구현하기!
     private void moveBall() {
         if (goDownY) {
             ballY += ballSpeed;
-            if(ballY > Main.BOARD_HEIGHT){
+            if (ballY > Main.BOARD_HEIGHT) {
                 ballY = Main.BOARD_HEIGHT;
             }
         } else {
             ballY -= ballSpeed;
-            if(ballY <0){
+            if (ballY < 0) {
                 ballY = 0;
             }
         }
         if (goLeftX) {
             ballX += ballSpeed;
-            if(ballX > Main.BOARD_WIDTH){
+            if (ballX > Main.BOARD_WIDTH) {
                 ballX = Main.BOARD_WIDTH;
             }
         } else {
             ballX -= ballSpeed;
-            if(ballX < 0){
+            if (ballX < 0) {
                 ballX = 0;
             }
 
@@ -82,9 +85,11 @@ public class Ball {
             goLeftX = true;
         }
         //플레이어
-//        if(p1.getPlayerX() < ballX && ballX<p1.getPlayerX()+Main.PLAYER_WIDTH && ballY+Main.BALL_SIZE == p1.getPlayerY() ){
-//            goDownY = false;
-//        }
+        System.out.println("p1 : " + p1.getPlayerX()+", "+ p1.getPlayerY() +"// ball : "+ ballX + ", "+ ballY);
+        if (p1.getPlayerX() + 150 < ballX && ballX < p1.getPlayerX() + 200
+            && p1.getPlayerY() - ballSpeed < ballY && ballY < p1.getPlayerY() + ballSpeed) {
+            goDownY= false;
+        }
 
     }
 

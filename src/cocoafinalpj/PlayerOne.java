@@ -12,16 +12,24 @@ public class PlayerOne extends Character implements Runnable {
     private final Image playerOneJump;
     private final Image playerOneDown;
 
-    private final String pathname = "src/cocoafinalpj/image/fox/walk_left.png";
-    private final String jumpImage = "src/cocoafinalpj/image/fox/jump_left.png";
-    private final String downImage = "src/cocoafinalpj/image/fox/down_left.png";
+    private final String defaultImage = path + "walk_right.png";
+    private final String jumpImage = path +"jump_right.png";
+    private final String downImage = path + "down_right.png";
 
     public PlayerOne() {
         super();
-        playerOne = makeCharacter(pathname);
+        playerOne = makeCharacter(defaultImage);
         playerOneJump = makeCharacter(jumpImage);
         playerOneDown = makeCharacter(downImage);
         foxStatus = FoxStatus.WALK_RIGHT;
+    }
+
+    public int getPlayerX() {
+        return playerX;
+    }
+
+    public int getPlayerY() {
+        return playerY;
     }
 
 
@@ -38,7 +46,7 @@ public class PlayerOne extends Character implements Runnable {
             playerX -= playerSpeed;
             foxStatus = FoxStatus.WALK_LEFT;
         }
-        if (right && playerX + playerSpeed + Main.PLAYER_WIDTH < Main.BOARD_WIDTH / 2) {
+        if (right && playerX + playerSpeed + Main.PLAYER_SIZE < Main.BOARD_WIDTH / 2) {
             playerX += playerSpeed;
             foxStatus = FoxStatus.WALK_RIGHT;
         }

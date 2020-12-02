@@ -6,16 +6,17 @@ import java.awt.Image;
 public class PlayerTwo extends Character implements Runnable {
 
 
-    private int playerX = Main.BOARD_WIDTH - (Main.INIT_X + Main.PLAYER_WIDTH);
+    private int playerX = Main.BOARD_WIDTH - (Main.INIT_X + Main.PLAYER_SIZE);
     private int playerY = Main.INIT_Y;
 
     private FoxStatus foxStatus;
     private final Image playerTwo;
     private final Image playerTwoJump;
     private final Image playerTwoDown;
-    private final String defaultImage = "src/cocoafinalpj/image/fox/walk_right.png";
-    private final String jumpImage = "src/cocoafinalpj/image/fox/jump_right.png";
-    private final String downImage ="src/cocoafinalpj/image/fox/down_right.png";
+
+    private final String defaultImage = path + "walk_left.png";
+    private final String jumpImage = path +"jump_left.png";
+    private final String downImage = path + "down_left.png";
 
     public PlayerTwo() {
         super();
@@ -26,6 +27,13 @@ public class PlayerTwo extends Character implements Runnable {
 
     }
 
+    public int getPlayerX() {
+        return playerX;
+    }
+
+    public int getPlayerY() {
+        return playerY;
+    }
 
     public void keyProcess() {
         if (up && playerY - playerSpeed > 0) {
@@ -40,7 +48,7 @@ public class PlayerTwo extends Character implements Runnable {
             playerX -= playerSpeed;
             foxStatus = FoxStatus.WALK_LEFT;
         }
-        if (right && playerX + playerSpeed + Main.PLAYER_WIDTH < Main.BOARD_WIDTH) {
+        if (right && playerX + playerSpeed + Main.PLAYER_SIZE < Main.BOARD_WIDTH) {
             playerX += playerSpeed;
             foxStatus = FoxStatus.WALK_RIGHT;
         }

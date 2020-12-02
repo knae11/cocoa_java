@@ -7,9 +7,7 @@ import javax.swing.ImageIcon;
 public abstract class Character implements Runnable {
 
     private Image character;
-    private int playerX;
-    private int playerY;
-
+    public final String path = "src/cocoafinalpj/image/character/";
     public int playerSpeed = 30;
     public boolean up, left, down, right, hit;
 
@@ -19,14 +17,6 @@ public abstract class Character implements Runnable {
     public Image makeCharacter(String pathname) {
         character = new ImageIcon(pathname).getImage();
         return character;
-    }
-
-    public int getPlayerX() {
-        return playerX;
-    }
-
-    public int getPlayerY() {
-        return playerY;
     }
 
     public void setUp(boolean up) {
@@ -65,4 +55,9 @@ public abstract class Character implements Runnable {
     abstract void keyProcess();
 
     abstract void playerDraw(Graphics g);
+
+    abstract int getPlayerX();
+
+    abstract int getPlayerY();
+
 }

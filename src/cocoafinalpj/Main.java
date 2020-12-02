@@ -7,8 +7,7 @@ public class Main {
 
     public static final int INIT_X = 100;
     public static final int INIT_Y = 600;
-    public static final int PLAYER_WIDTH = 200;
-    public static final int PLAYER_HEIGHT = 100;
+    public static final int PLAYER_SIZE = 150;
     public static final int BALL_SIZE = 80;
     public static final int NET_WIDTH = 30;
     public static final int NET_HEIGHT = 300;
