@@ -53,11 +53,11 @@ public class Ball {
             goDownY = true;
         }
         if (ballX + Main.BALL_SIZE == Main.BOARD_WIDTH / 2 - Main.NET_WIDTH / 2
-            && ballY > 300) {
+            && ballY > Main.INIT_Y - Main.NET_HEIGHT) {
             goLeftX = false;
         }
         if (ballX == Main.BOARD_WIDTH / 2 + Main.NET_WIDTH / 2
-            && ballY > 300) {
+            && ballY > Main.INIT_Y - Main.NET_HEIGHT) {
             goLeftX = true;
         }
 
