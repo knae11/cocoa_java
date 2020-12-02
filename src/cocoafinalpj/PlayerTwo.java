@@ -3,7 +3,7 @@ package cocoafinalpj;
 import java.awt.Graphics;
 import java.awt.Image;
 
-public class PlayerTwo extends Character implements Runnable {
+public class PlayerTwo extends Character {
 
 
     private int playerX = Main.BOARD_WIDTH - (Main.INIT_X + Main.PLAYER_SIZE);

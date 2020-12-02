@@ -3,7 +3,7 @@ package cocoafinalpj;
 import java.awt.Graphics;
 import java.awt.Image;
 
-public class PlayerOne extends Character implements Runnable {
+public class PlayerOne extends Character  {
 
     private int playerX = Main.INIT_X;
     private int playerY = Main.INIT_Y;
