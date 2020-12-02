@@ -9,7 +9,7 @@ public abstract class Character {
     private Image character;
     public final String path = "src/cocoafinalpj/image/character/";
     public int playerSpeed = 5;
-    public boolean up, left, down, right, hit;
+    public boolean up, left, down, right;
 
     public Character() {
     }
@@ -35,9 +35,6 @@ public abstract class Character {
         this.right = right;
     }
 
-    public void setHit(boolean hit) {
-        this.hit = hit;
-    }
 
 //    @Override
 //    public void run() {

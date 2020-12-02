@@ -71,6 +71,6 @@ public class Game extends JFrame {
 
 
     private void bindEvents() {
-        addKeyListener(new KeyboardHandler(playerOne,playerTwo));
+        addKeyListener(new KeyboardHandler(playerOne,playerTwo, ball));
     }
 }

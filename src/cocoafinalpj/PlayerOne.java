@@ -38,7 +38,7 @@ public class PlayerOne extends Character  {
             playerY -= playerSpeed;
             foxStatus = FoxStatus.UP;
         }
-        if (down && playerY + playerSpeed < Main.INIT_Y) {
+        if (down && playerY + playerSpeed+ Main.PLAYER_SIZE < Main.INIT_Y) {
             playerY += playerSpeed;
             foxStatus = FoxStatus.DOWN;
         }

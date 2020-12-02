@@ -16,6 +16,7 @@ public class Ball {
     private final PlayerOne p1;
     private final PlayerTwo p2;
     private boolean isPlaying = true;
+    private boolean hit = false;
 
     public Ball(PlayerOne p1, PlayerTwo p2) {
         ball = new ImageIcon("src/cocoafinalpj/image/ball.png").getImage();
@@ -23,12 +24,31 @@ public class Ball {
         this.p2 = p2;
     }
 
-    public void ballDraw(Graphics g) {
-        g.drawImage(ball, ballX, ballY, null);
-        moveBall();
+    public void setHit(boolean hit) {
+        //p1 정면
+        if ( Math.abs((ballX + Main.BALL_SIZE / 2) - (p1.getPlayerX() + Main.PLAYER_SIZE))
+            < Main.BALL_SIZE / 2
+            && Math.abs((ballY + Main.BALL_SIZE / 2) - p1.getPlayerY()) < Main.BALL_SIZE / 2) {
+            this.hit = hit;
+        }
+        //p2 정면
+        if(Math.abs(p2.getPlayerX() - (ballX + Main.BALL_SIZE / 2)) < Main.BALL_SIZE / 2
+            && Math.abs((ballY + Main.BALL_SIZE / 2) - p2.getPlayerY()) < Main.BALL_SIZE / 2){
+            this.hit = hit;
+        }
     }
 
-    private void moveBall() {
+    public void ballDraw(Graphics g) {
+        g.drawImage(ball, ballX, ballY, null);
+        if (hit) {
+            moveBall(ballSpeedUp);
+        } else {
+            moveBall(ballSpeed);
+        }
+    }
+
+
+    private void moveBall(int ballSpeed) {
         if (goDownY) {
             ballY += ballSpeed;
             if (ballY + Main.BALL_SIZE > Main.BOARD_HEIGHT) {
@@ -53,11 +73,13 @@ public class Ball {
 
         }
         determineBallDirection();
-        if(ballY+Main.BALL_SIZE>Main.INIT_Y){
-            isPlaying=false;
+        if (ballY + Main.BALL_SIZE > Main.INIT_Y) {
+            isPlaying = false;
         }
     }
-    public boolean getIsPlaying(){
+
+
+    public boolean getIsPlaying() {
         return isPlaying;
     }
 
@@ -69,26 +91,34 @@ public class Ball {
     }
 
     private void pTwoBounce() {
+        //앞에서 올때
         if (Math.abs(p2.getPlayerX() - (ballX + Main.BALL_SIZE / 2)) < Main.BALL_SIZE / 2
             && Math.abs((ballY + Main.BALL_SIZE / 2) - p2.getPlayerY()) < Main.BALL_SIZE / 2) {
             goDownY = false;
+            hit = false;
         }
+        //뒤에서 올때
         if (Math.abs(p2.getPlayerX() + Main.PLAYER_SIZE - (ballX + Main.BALL_SIZE / 2))
             < Main.BALL_SIZE / 2
             && Math.abs((ballY + Main.BALL_SIZE / 2) - p2.getPlayerY()) < Main.BALL_SIZE / 2) {
             goDownY = false;
+            hit = false;
         }
     }
 
     private void pOneBounce() {
+        //앞에서 올때
         if (Math.abs((ballX + Main.BALL_SIZE / 2) - (p1.getPlayerX() + Main.PLAYER_SIZE))
             < Main.BALL_SIZE / 2
             && Math.abs((ballY + Main.BALL_SIZE / 2) - p1.getPlayerY()) < Main.BALL_SIZE / 2) {
             goDownY = false;
+            hit = false;
         }
+        //뒤에서 올때
         if (Math.abs((ballX + Main.BALL_SIZE / 2) - p1.getPlayerX()) < Main.BALL_SIZE / 2
             && Math.abs((ballY + Main.BALL_SIZE / 2) - p1.getPlayerY()) < Main.BALL_SIZE / 2) {
             goDownY = false;
+            hit = false;
         }
     }
 

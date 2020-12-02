@@ -3,13 +3,18 @@ package cocoafinalpj;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class KeyboardHandler  extends KeyAdapter {
-    private Character playerOne,  playerTwo;
-    public KeyboardHandler(Character p1, Character p2){
+public class KeyboardHandler extends KeyAdapter {
+
+    private Character playerOne, playerTwo;
+    private Ball ball;
+
+    public KeyboardHandler(Character p1, Character p2, Ball ball) {
         playerOne = p1;
         playerTwo = p2;
+        this.ball = ball;
 
     }
+
     @Override
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
@@ -26,7 +31,7 @@ public class KeyboardHandler  extends KeyAdapter {
             playerTwo.setRight(true);
         }
         if (keyCode == KeyEvent.VK_ENTER) {
-            System.out.println("2p hit");
+            ball.setHit(true);
         }
         if (keyCode == KeyEvent.VK_W) {
             playerOne.setUp(true);
@@ -41,7 +46,7 @@ public class KeyboardHandler  extends KeyAdapter {
             playerOne.setRight(true);
         }
         if (keyCode == 16) {
-            System.out.println("1p hit");
+            ball.setHit(true);
         }
     }
 
@@ -60,9 +65,6 @@ public class KeyboardHandler  extends KeyAdapter {
         if (keyCode == KeyEvent.VK_RIGHT) {
             playerTwo.setRight(false);
         }
-        if (keyCode == KeyEvent.VK_ENTER) {
-            System.out.println("2p hit");
-        }
         if (keyCode == KeyEvent.VK_W) {
             playerOne.setUp(false);
         }
@@ -74,9 +76,6 @@ public class KeyboardHandler  extends KeyAdapter {
         }
         if (keyCode == KeyEvent.VK_D) {
             playerOne.setRight(false);
-        }
-        if (keyCode == 16) {
-            System.out.println("1p hit release");
         }
     }
 }
