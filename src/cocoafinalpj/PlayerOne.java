@@ -6,7 +6,7 @@ import java.awt.Image;
 public class PlayerOne extends Character  {
 
     private int playerX = Main.INIT_X;
-    private int playerY = Main.INIT_Y;
+    private int playerY = Main.INIT_Y-Main.PLAYER_SIZE;
     private FoxStatus foxStatus;
     private final Image playerOne;
     private final Image playerOneJump;

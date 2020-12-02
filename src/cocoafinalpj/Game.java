@@ -15,6 +15,7 @@ public class Game extends JFrame {
     private Ball ball;
     private Image image;
     private Graphics gImg;
+    private boolean isPlaying = true;
 
     public Game() {
         playerOne = new PlayerOne();
@@ -46,8 +47,16 @@ public class Game extends JFrame {
     public void paint(Graphics g) {
         image = createImage(Main.BOARD_WIDTH, Main.BOARD_HEIGHT);
         gImg = image.getGraphics();
-        screenDraw(gImg);
+        if(isPlaying){
+            screenDraw(gImg);
+        }else{
+            screenGameOver(gImg);
+        }
         g.drawImage(image, 0, 0, null);
+    }
+
+    private void screenGameOver(Graphics g) {
+        g.drawImage(backgroundImage, 0, 0, null);
     }
 
     private void screenDraw(Graphics g) {
@@ -56,6 +65,7 @@ public class Game extends JFrame {
         playerOne.playerDraw(g);
         playerTwo.playerDraw(g);
         ball.ballDraw(g);
+        isPlaying = ball.getIsPlaying();
         this.repaint();
     }
 

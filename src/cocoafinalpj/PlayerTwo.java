@@ -7,7 +7,7 @@ public class PlayerTwo extends Character {
 
 
     private int playerX = Main.BOARD_WIDTH - (Main.INIT_X + Main.PLAYER_SIZE);
-    private int playerY = Main.INIT_Y;
+    private int playerY = Main.INIT_Y-Main.PLAYER_SIZE;
 
     private FoxStatus foxStatus;
     private final Image playerTwo;

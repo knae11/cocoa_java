@@ -11,10 +11,11 @@ public class Ball {
     private int ballY = 300;
     private final int ballSpeed = 3;
     private final int ballSpeedUp = ballSpeed * 2;
-    boolean goLeftX = true;
-    boolean goDownY = true;
+    private boolean goLeftX = true;
+    private boolean goDownY = true;
     private final PlayerOne p1;
     private final PlayerTwo p2;
+    private boolean isPlaying = true;
 
     public Ball(PlayerOne p1, PlayerTwo p2) {
         ball = new ImageIcon("src/cocoafinalpj/image/ball.png").getImage();
@@ -52,7 +53,12 @@ public class Ball {
 
         }
         determineBallDirection();
-
+        if(ballY+Main.BALL_SIZE>Main.INIT_Y){
+            isPlaying=false;
+        }
+    }
+    public boolean getIsPlaying(){
+        return isPlaying;
     }
 
     private void determineBallDirection() {
