@@ -63,18 +63,7 @@ public class PlayerTwo extends Character implements Runnable {
         }
     }
 
-    @Override
-    public void run() {
-        while (true) {
-            try {
-                keyProcess();
-                //System.out.println("thread 2 going");
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+
 
 
 }

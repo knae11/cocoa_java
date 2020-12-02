@@ -4,7 +4,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
-public abstract class Character {
+public abstract class Character implements Runnable {
 
     private Image character;
 
@@ -39,7 +39,18 @@ public abstract class Character {
     public void setHit(boolean hit) {
         this.hit = hit;
     }
-
+    @Override
+    public void run() {
+        while (true) {
+            try {
+                keyProcess();
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+                return;
+            }
+        }
+    }
     abstract void keyProcess();
     abstract void playerDraw(Graphics g);
 }
