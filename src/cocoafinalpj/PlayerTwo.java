@@ -6,7 +6,7 @@ import java.awt.Image;
 public class PlayerTwo extends Character implements Runnable {
 
 
-    private int playerX = Main.BOARD_WIDTH - (Main.INIT_X + Main.CHAR_WIDTH);
+    private int playerX = Main.BOARD_WIDTH - (Main.INIT_X + Main.PLAYER_WIDTH);
     private int playerY = Main.INIT_Y;
 
     private FoxStatus foxStatus;
@@ -39,7 +39,7 @@ public class PlayerTwo extends Character implements Runnable {
             playerX -= playerSpeed;
             foxStatus = FoxStatus.WALK_LEFT;
         }
-        if (right && playerX + playerSpeed + Main.CHAR_WIDTH < Main.BOARD_WIDTH) {
+        if (right && playerX + playerSpeed + Main.PLAYER_WIDTH < Main.BOARD_WIDTH) {
             playerX += playerSpeed;
             foxStatus = FoxStatus.WALK_RIGHT;
         }

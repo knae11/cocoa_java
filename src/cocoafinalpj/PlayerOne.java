@@ -38,7 +38,7 @@ public class PlayerOne extends Character implements Runnable {
             playerX -= playerSpeed;
             foxStatus = FoxStatus.WALK_LEFT;
         }
-        if (right && playerX + playerSpeed + Main.CHAR_WIDTH < Main.BOARD_WIDTH / 2) {
+        if (right && playerX + playerSpeed + Main.PLAYER_WIDTH < Main.BOARD_WIDTH / 2) {
             playerX += playerSpeed;
             foxStatus = FoxStatus.WALK_RIGHT;
         }
