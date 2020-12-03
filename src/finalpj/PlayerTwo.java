@@ -1,4 +1,4 @@
-package cocoafinalpj;
+package finalpj;
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -10,7 +10,7 @@ public class PlayerTwo extends Character {
     private int playerX = Main.BOARD_WIDTH - (Main.INIT_X + Main.PLAYER_SIZE);
     private int playerY = Main.INIT_Y - Main.PLAYER_SIZE;
 
-    private FoxStatus foxStatus;
+    private CharacterStatus characterStatus;
     private final Image playerTwo;
     private final Image playerTwoJump;
     private final Image playerTwoDown;
@@ -34,7 +34,7 @@ public class PlayerTwo extends Character {
         winner.add(makeCharacter(happy2));
         loser.add(makeCharacter(sad1));
         loser.add(makeCharacter(sad2));
-        foxStatus = FoxStatus.WALK_LEFT;
+        characterStatus = CharacterStatus.WALK_LEFT;
 
     }
 
@@ -58,25 +58,25 @@ public class PlayerTwo extends Character {
     public void keyProcess() {
         if (up && playerY - playerSpeed > 0) {
             playerY -= playerSpeed;
-            foxStatus = FoxStatus.UP;
+            characterStatus = CharacterStatus.UP;
         }
         if (down && playerY + playerSpeed + Main.PLAYER_SIZE < Main.INIT_Y) {
             playerY += playerSpeed;
-            foxStatus = FoxStatus.DOWN;
+            characterStatus = CharacterStatus.DOWN;
         }
         if (left && playerX - playerSpeed > Main.BOARD_WIDTH / 2) {
             playerX -= playerSpeed;
-            foxStatus = FoxStatus.WALK_LEFT;
+            characterStatus = CharacterStatus.WALK_LEFT;
         }
         if (right && playerX + playerSpeed + Main.PLAYER_SIZE < Main.BOARD_WIDTH) {
             playerX += playerSpeed;
-            foxStatus = FoxStatus.WALK_RIGHT;
+            characterStatus = CharacterStatus.WALK_RIGHT;
         }
     }
 
 
     public void playerDraw(Graphics g) {
-        switch (foxStatus) {
+        switch (characterStatus) {
             case UP:
                 g.drawImage(playerTwoJump, playerX, playerY, null);
                 break;

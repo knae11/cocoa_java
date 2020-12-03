@@ -1,4 +1,4 @@
-package cocoafinalpj;
+package finalpj;
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -7,7 +7,7 @@ import javax.swing.ImageIcon;
 public abstract class Character {
 
     private Image character;
-    public final String path = "src/cocoafinalpj/image/character/";
+    public final String path = "src/finalpj/image/character/";
     public int playerSpeed = 5;
     public boolean up, left, down, right;
 
@@ -34,20 +34,6 @@ public abstract class Character {
     public void setRight(boolean right) {
         this.right = right;
     }
-
-
-//    @Override
-//    public void run() {
-//        while (true) {
-//            try {
-//                keyProcess();
-//                Thread.sleep(100);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//                return;
-//            }
-//        }
-//    }
 
     abstract void keyProcess();
 

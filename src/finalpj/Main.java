@@ -1,4 +1,4 @@
-package cocoafinalpj;
+package finalpj;
 
 public class Main {
 

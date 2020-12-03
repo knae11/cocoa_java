@@ -1,4 +1,4 @@
-package cocoafinalpj;
+package finalpj;
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -19,7 +19,7 @@ public class Ball {
     private boolean hit = false;
 
     public Ball(PlayerOne p1, PlayerTwo p2) {
-        ball = new ImageIcon("src/cocoafinalpj/image/ball.png").getImage();
+        ball = new ImageIcon("src/finalpj/image/ball.png").getImage();
         this.p1 = p1;
         this.p2 = p2;
     }
