@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 
 public class Game extends JFrame {
 
+    private final String imagePath = "src/finalpj/image/";
 
     private Image backgroundImage;
     private Image netImage;
@@ -20,12 +21,16 @@ public class Game extends JFrame {
     private int endingFrame = 0;
 
     public Game() {
-        playerOne = new PlayerOne();
-        playerTwo = new PlayerTwo();
-        ball = new Ball(playerOne, playerTwo);
+        getInstances();
         initUI();
         setResource();
         bindEvents();
+    }
+
+    private void getInstances() {
+        playerOne = new PlayerOne();
+        playerTwo = new PlayerTwo();
+        ball = new Ball(playerOne, playerTwo);
     }
 
 
@@ -38,21 +43,25 @@ public class Game extends JFrame {
     }
 
     private void setResource() {
-        backgroundImage = new ImageIcon("src/finalpj/image/background.jpg").getImage();
-        netImage = new ImageIcon("src/finalpj/image/woodnet.jpg").getImage();
+        backgroundImage = new ImageIcon(imagePath + "background.jpg").getImage();
+        netImage = new ImageIcon(imagePath + "woodnet.jpg").getImage();
+    }
+
+    private void bindEvents() {
+        addKeyListener(new KeyboardHandler(playerOne, playerTwo, ball));
     }
 
     public void paint(Graphics g) {
         image = createImage(Main.BOARD_WIDTH, Main.BOARD_HEIGHT);
         gImg = image.getGraphics();
         if (isPlaying) {
-            screenDraw(gImg);
+            screenGamePlay(gImg);
         } else {
             screenGameOver(gImg, endingFrame % 2);
             endingFrame++;
             try {
-                g.drawImage(image, 0, 0, null);
                 Thread.sleep(500);
+                g.drawImage(image, 0, 0, null);
             } catch (InterruptedException e) {
                 e.printStackTrace();
                 System.out.println("[Error]: 게임엔딩에서 에러발생함");
@@ -78,7 +87,7 @@ public class Game extends JFrame {
         this.repaint();
     }
 
-    private void screenDraw(Graphics g) {
+    private void screenGamePlay(Graphics g) {
         g.drawImage(backgroundImage, 0, 0, null);
         g.drawImage(netImage, Main.BOARD_WIDTH / 2 - Main.NET_WIDTH / 2, Main.BOARD_HEIGHT / 2,
             null);
@@ -93,7 +102,4 @@ public class Game extends JFrame {
     }
 
 
-    private void bindEvents() {
-        addKeyListener(new KeyboardHandler(playerOne, playerTwo, ball));
-    }
 }

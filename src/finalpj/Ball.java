@@ -6,9 +6,9 @@ import javax.swing.ImageIcon;
 
 public class Ball {
 
-    private Image ball;
-    private int ballX = 300;
-    private int ballY = 300;
+    private final Image ball;
+    private int ballX = 100;
+    private int ballY = 100;
     private final int ballSpeed = 3;
     private final int ballSpeedUp = ballSpeed * 2;
     private boolean goLeftX = true;

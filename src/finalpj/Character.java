@@ -6,32 +6,30 @@ import javax.swing.ImageIcon;
 
 public abstract class Character {
 
-    private Image character;
-    public final String path = "src/finalpj/image/character/";
-    public int playerSpeed = 5;
-    public boolean up, left, down, right;
+    final String path = "src/finalpj/image/character/";
+    int playerSpeed = 5;
+    boolean up, left, down, right;
 
-    public Character() {
+    Character() {
     }
 
-    public Image makeCharacter(String pathname) {
-        character = new ImageIcon(pathname).getImage();
-        return character;
+    Image makeCharacter(String pathname) {
+        return new ImageIcon(pathname).getImage();
     }
 
-    public void setUp(boolean up) {
+    void setUp(boolean up) {
         this.up = up;
     }
 
-    public void setDown(boolean down) {
+    void setDown(boolean down) {
         this.down = down;
     }
 
-    public void setLeft(boolean left) {
+    void setLeft(boolean left) {
         this.left = left;
     }
 
-    public void setRight(boolean right) {
+    void setRight(boolean right) {
         this.right = right;
     }
 
@@ -43,8 +41,8 @@ public abstract class Character {
 
     abstract int getPlayerY();
 
-    //abstract ArrayList<Image> getWinner();
+    abstract Image getWinner(int i);
 
-   // abstract  ArrayList<Image> getLoser();
+    abstract Image getLoser(int i);
 
 }

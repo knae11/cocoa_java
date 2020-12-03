@@ -5,8 +5,8 @@ import java.awt.event.KeyEvent;
 
 public class KeyboardHandler extends KeyAdapter {
 
-    private Character playerOne, playerTwo;
-    private Ball ball;
+    private final Character playerOne, playerTwo;
+    private final Ball ball;
 
     public KeyboardHandler(Character p1, Character p2, Ball ball) {
         playerOne = p1;

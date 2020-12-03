@@ -4,24 +4,24 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;
 
-public class PlayerOne extends Character  {
+public class PlayerOne extends Character {
 
-    private int playerX = Main.INIT_X;
-    private int playerY = Main.INIT_Y-Main.PLAYER_SIZE;
-    private CharacterStatus characterStatus;
     private final Image playerOne;
     private final Image playerOneJump;
     private final Image playerOneDown;
-    private ArrayList<Image> winner = new ArrayList<>();
-    private ArrayList<Image> loser = new ArrayList<>();
-
+    private final ArrayList<Image> winner = new ArrayList<>();
+    private final ArrayList<Image> loser = new ArrayList<>();
     private final String defaultImage = path + "walk_right.png";
-    private final String jumpImage = path +"jump_right.png";
+    private final String jumpImage = path + "jump_right.png";
     private final String downImage = path + "down_right.png";
     private final String happy1 = path + "happy1.png";
     private final String happy2 = path + "happy2.png";
     private final String sad1 = path + "sad1.png";
     private final String sad2 = path + "sad2.png";
+
+    private int playerX = Main.INIT_X;
+    private int playerY = Main.INIT_Y - Main.PLAYER_SIZE;
+    private CharacterStatus characterStatus;
 
     public PlayerOne() {
         super();
@@ -43,11 +43,11 @@ public class PlayerOne extends Character  {
         return playerY;
     }
 
-    public Image getWinner(int i){
+    public Image getWinner(int i) {
         return this.winner.get(i);
     }
 
-    public  Image getLoser(int i){
+    public Image getLoser(int i) {
         return this.loser.get(i);
     }
 
@@ -56,7 +56,7 @@ public class PlayerOne extends Character  {
             playerY -= playerSpeed;
             characterStatus = CharacterStatus.UP;
         }
-        if (down && playerY + playerSpeed+ Main.PLAYER_SIZE < Main.INIT_Y) {
+        if (down && playerY + playerSpeed + Main.PLAYER_SIZE < Main.INIT_Y) {
             playerY += playerSpeed;
             characterStatus = CharacterStatus.DOWN;
         }
@@ -69,7 +69,6 @@ public class PlayerOne extends Character  {
             characterStatus = CharacterStatus.WALK_RIGHT;
         }
     }
-
 
     public void playerDraw(Graphics g) {
         switch (characterStatus) {
@@ -88,6 +87,5 @@ public class PlayerOne extends Character  {
         }
         keyProcess();
     }
-
 
 }
