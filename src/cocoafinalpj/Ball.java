@@ -48,10 +48,7 @@ public class Ball {
     }
 
     public boolean getWinner() {
-        if (ballX < Main.BOARD_WIDTH / 2) {
-            return false;
-        }
-        return true;
+        return ballX > Main.BOARD_WIDTH/2;
     }
 
 

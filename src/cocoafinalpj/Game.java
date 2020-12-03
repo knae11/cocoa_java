@@ -17,6 +17,7 @@ public class Game extends JFrame {
     private Graphics gImg;
     private boolean isPlaying = true;
     private boolean p1IsWinner = true;
+    private int endingFrame = 0;
 
     public Game() {
         playerOne = new PlayerOne();
@@ -51,17 +52,16 @@ public class Game extends JFrame {
         if (isPlaying) {
             screenDraw(gImg);
         } else {
-            for (int i = 0; i < 10; i++) {
-                screenGameOver(gImg, i % 2);
-                try {
-                    g.drawImage(image, 0, 0, null);
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                    return;
-                }
+            screenGameOver(gImg, endingFrame % 2);
+            endingFrame++;
+            try {
+                g.drawImage(image, 0, 0, null);
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+                System.out.println("[Error]: 게임엔딩에서 에러발생함");
+                System.exit(0);
             }
-            System.exit(0);
         }
         g.drawImage(image, 0, 0, null);
     }
@@ -69,11 +69,15 @@ public class Game extends JFrame {
     private void screenGameOver(Graphics g, int i) {
         g.drawImage(backgroundImage, 0, 0, null);
         if (p1IsWinner) {
-            g.drawImage(playerOne.getWinner(i), Main.BOARD_WIDTH/3-Main.PLAYER_ENDING_SIZE, Main.BOARD_HEIGHT/2, null);
-            g.drawImage(playerTwo.getLoser(i), (Main.BOARD_WIDTH/3)*2, Main.BOARD_HEIGHT/2, null);
+            g.drawImage(playerOne.getWinner(i), Main.BOARD_WIDTH / 3 - Main.PLAYER_ENDING_SIZE,
+                Main.BOARD_HEIGHT / 2, null);
+            g.drawImage(playerTwo.getLoser(i), (Main.BOARD_WIDTH / 3) * 2, Main.BOARD_HEIGHT / 2,
+                null);
         } else {
-            g.drawImage(playerOne.getLoser(i), Main.BOARD_WIDTH/3-Main.PLAYER_ENDING_SIZE, Main.BOARD_HEIGHT/2, null);
-            g.drawImage(playerTwo.getWinner(i), (Main.BOARD_WIDTH/3)*2, Main.BOARD_HEIGHT/2, null);
+            g.drawImage(playerOne.getLoser(i), Main.BOARD_WIDTH / 3 - Main.PLAYER_ENDING_SIZE,
+                Main.BOARD_HEIGHT / 2, null);
+            g.drawImage(playerTwo.getWinner(i), (Main.BOARD_WIDTH / 3) * 2, Main.BOARD_HEIGHT / 2,
+                null);
         }
         this.repaint();
     }
