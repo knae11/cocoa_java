@@ -16,12 +16,13 @@ public class Game extends JFrame {
     private Image image;
     private Graphics gImg;
     private boolean isPlaying = true;
+    private boolean p1IsWinner = true;
 
     public Game() {
         playerOne = new PlayerOne();
         //Thread p1 = new Thread(playerOne);
         playerTwo = new PlayerTwo();
-      //  Thread p2 = new Thread(playerTwo);
+        //  Thread p2 = new Thread(playerTwo);
         ball = new Ball(playerOne, playerTwo);
         //p1.start();
         //p2.start();
@@ -32,7 +33,7 @@ public class Game extends JFrame {
 
 
     private void initUI() {
-        setTitle("nana game project");
+        setTitle("With dino, pikachu game");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(Main.BOARD_WIDTH, Main.BOARD_HEIGHT);
         setResizable(false);
@@ -47,30 +48,52 @@ public class Game extends JFrame {
     public void paint(Graphics g) {
         image = createImage(Main.BOARD_WIDTH, Main.BOARD_HEIGHT);
         gImg = image.getGraphics();
-        if(isPlaying){
+        if (isPlaying) {
             screenDraw(gImg);
-        }else{
-            screenGameOver(gImg);
+        } else {
+            for (int i = 0; i < 10; i++) {
+                screenGameOver(gImg, i % 2);
+                try {
+                    g.drawImage(image, 0, 0, null);
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                    return;
+                }
+            }
+            System.exit(0);
         }
         g.drawImage(image, 0, 0, null);
     }
 
-    private void screenGameOver(Graphics g) {
+    private void screenGameOver(Graphics g, int i) {
         g.drawImage(backgroundImage, 0, 0, null);
+        if (p1IsWinner) {
+            g.drawImage(playerOne.getWinner(i), Main.BOARD_WIDTH/3-Main.PLAYER_ENDING_SIZE, Main.BOARD_HEIGHT/2, null);
+            g.drawImage(playerTwo.getLoser(i), (Main.BOARD_WIDTH/3)*2, Main.BOARD_HEIGHT/2, null);
+        } else {
+            g.drawImage(playerOne.getLoser(i), Main.BOARD_WIDTH/3-Main.PLAYER_ENDING_SIZE, Main.BOARD_HEIGHT/2, null);
+            g.drawImage(playerTwo.getWinner(i), (Main.BOARD_WIDTH/3)*2, Main.BOARD_HEIGHT/2, null);
+        }
+        this.repaint();
     }
 
     private void screenDraw(Graphics g) {
         g.drawImage(backgroundImage, 0, 0, null);
-        g.drawImage(netImage,Main.BOARD_WIDTH/2 - Main.NET_WIDTH/2,Main.BOARD_HEIGHT/2,null );
+        g.drawImage(netImage, Main.BOARD_WIDTH / 2 - Main.NET_WIDTH / 2, Main.BOARD_HEIGHT / 2,
+            null);
         playerOne.playerDraw(g);
         playerTwo.playerDraw(g);
         ball.ballDraw(g);
         isPlaying = ball.getIsPlaying();
+        if (!isPlaying) {
+            p1IsWinner = ball.getWinner();
+        }
         this.repaint();
     }
 
 
     private void bindEvents() {
-        addKeyListener(new KeyboardHandler(playerOne,playerTwo, ball));
+        addKeyListener(new KeyboardHandler(playerOne, playerTwo, ball));
     }
 }

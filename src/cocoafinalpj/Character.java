@@ -57,4 +57,8 @@ public abstract class Character {
 
     abstract int getPlayerY();
 
+    //abstract ArrayList<Image> getWinner();
+
+   // abstract  ArrayList<Image> getLoser();
+
 }

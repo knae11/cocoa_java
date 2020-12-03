@@ -25,15 +25,15 @@ public class Ball {
     }
 
     public void setHit(boolean hit) {
-        //p1 정면
-        if ( Math.abs((ballX + Main.BALL_SIZE / 2) - (p1.getPlayerX() + Main.PLAYER_SIZE))
+        //p1 정면 + hit
+        if (Math.abs((ballX + Main.BALL_SIZE / 2) - (p1.getPlayerX() + Main.PLAYER_SIZE))
             < Main.BALL_SIZE / 2
             && Math.abs((ballY + Main.BALL_SIZE / 2) - p1.getPlayerY()) < Main.BALL_SIZE / 2) {
             this.hit = hit;
         }
-        //p2 정면
-        if(Math.abs(p2.getPlayerX() - (ballX + Main.BALL_SIZE / 2)) < Main.BALL_SIZE / 2
-            && Math.abs((ballY + Main.BALL_SIZE / 2) - p2.getPlayerY()) < Main.BALL_SIZE / 2){
+        //p2 정면 + hit
+        if (Math.abs(p2.getPlayerX() - (ballX + Main.BALL_SIZE / 2)) < Main.BALL_SIZE / 2
+            && Math.abs((ballY + Main.BALL_SIZE / 2) - p2.getPlayerY()) < Main.BALL_SIZE / 2) {
             this.hit = hit;
         }
     }
@@ -45,6 +45,13 @@ public class Ball {
         } else {
             moveBall(ballSpeed);
         }
+    }
+
+    public boolean getWinner() {
+        if (ballX < Main.BOARD_WIDTH / 2) {
+            return false;
+        }
+        return true;
     }
 
 
@@ -73,6 +80,11 @@ public class Ball {
 
         }
         determineBallDirection();
+        gameOver();
+
+    }
+
+    private void gameOver() {
         if (ballY + Main.BALL_SIZE > Main.INIT_Y) {
             isPlaying = false;
         }

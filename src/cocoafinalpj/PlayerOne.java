@@ -2,6 +2,7 @@ package cocoafinalpj;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.ArrayList;
 
 public class PlayerOne extends Character  {
 
@@ -11,16 +12,26 @@ public class PlayerOne extends Character  {
     private final Image playerOne;
     private final Image playerOneJump;
     private final Image playerOneDown;
+    private ArrayList<Image> winner = new ArrayList<>();
+    private ArrayList<Image> loser = new ArrayList<>();
 
     private final String defaultImage = path + "walk_right.png";
     private final String jumpImage = path +"jump_right.png";
     private final String downImage = path + "down_right.png";
+    private final String happy1 = path + "happy1.png";
+    private final String happy2 = path + "happy2.png";
+    private final String sad1 = path + "sad1.png";
+    private final String sad2 = path + "sad2.png";
 
     public PlayerOne() {
         super();
         playerOne = makeCharacter(defaultImage);
         playerOneJump = makeCharacter(jumpImage);
         playerOneDown = makeCharacter(downImage);
+        winner.add(makeCharacter(happy1));
+        winner.add(makeCharacter(happy2));
+        loser.add(makeCharacter(sad1));
+        loser.add(makeCharacter(sad2));
         foxStatus = FoxStatus.WALK_RIGHT;
     }
 
@@ -32,6 +43,13 @@ public class PlayerOne extends Character  {
         return playerY;
     }
 
+    public Image getWinner(int i){
+        return this.winner.get(i);
+    }
+
+    public  Image getLoser(int i){
+        return this.loser.get(i);
+    }
 
     public void keyProcess() {
         if (up && playerY - playerSpeed > 0) {
